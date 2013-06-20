@@ -10,6 +10,8 @@ class Ability
       can :create, Viewer
       can :create, Viewing
       can :create, Comment
+      
+      cannot :read, User
     end
   end
 end

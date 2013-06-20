@@ -1,5 +1,11 @@
 <%= form_for @viewer do |f| %>
-  <%= error_messages_for @viewer %>
+  <% if @viewer.errors.any? %>
+    <h3 class="danger">Please correct the following <%= 'error'.pluralize(@viewer.errors.count) %>:</h3>
+    <% @viewer.errors.full_messages.each do |error| %>
+      <p class="danger"><%= error %></p>
+    <% end %>
+    <br>
+  <% end %>
   
     <%= f.hidden_field :user_id, :value => current_user.id %>
     

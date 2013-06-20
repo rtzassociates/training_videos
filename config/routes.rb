@@ -5,7 +5,12 @@ Cachely::Application.routes.draw do
   get "viewers/new"
 
   resources :users
-  resources :videos
+  resources :videos do
+    collection do
+      get :order
+      post :sort
+    end
+  end
   resources :sessions
   resources :viewers
   resources :viewings

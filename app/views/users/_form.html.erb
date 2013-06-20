@@ -1,5 +1,11 @@
 <%= form_for @user do |f| %>
-  <%= error_messages_for @user %>
+  <% if @user.errors.any? %>
+    <h3 class="danger">Please correct the following <%= 'error'.pluralize(@user.errors.count) %>:</h3>
+    <% @user.errors.full_messages.each do |error| %>
+      <p class="danger"><%= error %></p>
+    <% end %>
+    <br>
+  <% end %>
 
     <div class="control-group">
       <%= f.label :username, :class => "control-label" %>

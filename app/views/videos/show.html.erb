@@ -7,28 +7,47 @@
     </div>
   <% end %>
 </div>
+
 <p class="muted"><strong>Trouble viewing this video?</strong> IE8 users please make sure <%= link_to "Adobe Flash Player", "https://get.adobe.com/flashplayer/" %> is installed and up to date.</p>
+
 <h1><%= @video.name %></h1>
+
 <% if @video.pdf.present? %>
   <p><%= link_to "View PDF", @video.pdf_url %></p>
 <% end %>
+
 <% if current_user.admin? %>
   <div class="actions">
     <%= link_to "Edit", edit_video_path(@video) %>
     <%= link_to "Delete", @video, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
   </div>
 <% end %>
+
 <hr>
+
 <div id="comments">
-  <h3>Leave a comment</h3>
-  <%= form_for @comment do |f| %>
-    <%= f.hidden_field :video_id, :value => @video.id %>
-    <%= f.hidden_field :viewer_id, :value => current_viewer.id %>
-    <div class="control-group">
-      <div class="controls">
-        <%= f.text_area :content, :class => "span12", :rows => 3 %>
+  <% if current_viewer %>
+    <h3>Leave a comment</h3>
+    <%= form_for @comment do |f| %>
+      <%= f.hidden_field :video_id, :value => @video.id %>
+      <%= f.hidden_field :viewer_id, :value => current_viewer.id %>
+      <div class="control-group">
+        <div class="controls">
+          <%= f.text_area :content, :class => "span12", :rows => 3 %>
+        </div>
       </div>
-    </div>
-    <%= f.submit "Done", :class => 'btn' %>
+      <%= f.submit "Done", :class => 'btn' %>
+    <% end %>
+  <% else %>
+    <h3>Comments</h3>
+    <% @video.comments.each do |comment| %>
+      <% unless comment.content.blank? %>
+        <div class="comment well">
+          <p class="muted"><%= date_for comment.created_at %></p>
+          <p><strong><%= comment.viewer.name %> said:</strong></p>
+          <p><%= comment.content %><p>
+        </div>
+      <% end %>
+    <% end %>
   <% end %>
 </div>

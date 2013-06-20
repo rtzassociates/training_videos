@@ -2,9 +2,10 @@ class VideosController < ApplicationController
   
   authorize_resource
   
+  before_filter :viewer_required
+  
   def index
-    redirect_to new_viewer_url if current_viewer.nil?
-    @videos = Video.order("id ASC").page(params[:page]).per_page(10)
+    @videos = Video.order("position").page(params[:page]).per_page(25)
   end
   
   def show
@@ -49,8 +50,23 @@ class VideosController < ApplicationController
     redirect_to videos_path
   end
   
-  def favorites
-    @videos = current_user.favorite_videos.order("id DESC").page(params[:page]).per_page(50)
+  def order
+    @videos = Video.order("position")
+  end
+  
+  def sort
+    params[:video].each_with_index do |id, index|
+      Video.update_all({position: index+1}, {id: id})
+    end
+    render nothing: true
+  end
+  
+  private
+  
+  def viewer_required
+    unless current_user.admin?
+      redirect_to new_viewer_url if current_viewer.nil?
+    end
   end
   
 end

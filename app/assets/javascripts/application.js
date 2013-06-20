@@ -12,9 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require twitter/bootstrap
-//= require jquery-fileupload/basic
-//= require jquery-fileupload/vendor/tmpl
-//= require chosen-jquery
-//= require jquery.tokeninput
 //= require_tree .

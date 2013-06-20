@@ -1,5 +1,13 @@
 <%= form_for @video, :html => { :multipart => :true } do |f| %>
-  <%= error_messages_for @video %>
+  
+  <% if @video.errors.any? %>
+    <h3 class="danger">Please correct the following <%= 'error'.pluralize(@video.errors.count) %>:</h3>
+    <% @video.errors.full_messages.each do |error| %>
+      <p class="danger"><%= error %></p>
+    <% end %>
+    <br>
+  <% end %>
+  
   <div class="control-group">
     <%= f.label :name, "Training Session Name", :class => "control-label" %>
     <div class="controls">

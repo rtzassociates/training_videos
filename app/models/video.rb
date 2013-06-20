@@ -2,11 +2,7 @@ class Video < ActiveRecord::Base
   attr_accessible :video, :name, :user_id, :pdf, :vimeo_embed
   
   attr_reader :tag_tokens
-  
-  mount_uploader :video, VideoUploader
-  process_in_background :video
-  
-  mount_uploader :thumbnail, ImageUploader
+
   mount_uploader :pdf, PdfUploader
 
   belongs_to :user
@@ -18,10 +14,11 @@ class Video < ActiveRecord::Base
   has_many :views, as: :viewable, :dependent => :destroy
   has_many :viewings, :dependent => :destroy
   
-  has_one :comment
+  has_many :comments
   
   validates :name, :presence => true
   validates :user_id, :presence => true
+  validates :vimeo_embed, :presence => true
 
   def name
     read_attribute(:name).nil? ? File.basename(video.filename, '.*').titleize : read_attribute(:name) 

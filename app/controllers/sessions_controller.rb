@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:username], params[:password])
     if user
       login user  
-      redirect_to new_viewer_url, :notice => "Logged in successfully"
+      redirect_to root_url, :notice => "Logged in successfully"
     else
       flash.now[:error] = "Invalid login or password"
       render :action => 'new'

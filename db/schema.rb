@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130620022920) do
+ActiveRecord::Schema.define(:version => 20130620193754) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(:version => 20130620022920) do
     t.boolean  "success"
     t.string   "pdf"
     t.text     "vimeo_embed"
+    t.integer  "position"
   end
 
   create_table "viewers", :force => true do |t|

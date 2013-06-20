@@ -1,0 +1,15 @@
+<h1>Sort Videos</h1>
+<hr>
+<ul id="videos" data-update-url="<%= sort_videos_url %>">
+<% @videos.each do |video| %>
+  <%= content_tag_for :li, video do %>
+    <span class="handle">[drag]</span>
+    <%= link_to h(video.name), video %>
+  <% end %>
+<% end %>
+</ul>
+<br>
+
+<div class="actions">
+  <%= link_to "Done", videos_url, :class => "btn" %>
+</div>

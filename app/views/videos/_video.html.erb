@@ -2,7 +2,12 @@
   <div class="media">
     <div class="media-body">
       <h4 class="media-heading">
-        <%= index + 1%>. <%= link_to video.name, new_viewing_path(:video_id => video.id) %>
+        <%= index + 1%>. 
+        <% if current_user.admin? %>
+          <%= link_to video.name, video %>
+        <% else %>  
+          <%= link_to video.name, new_viewing_path(:video_id => video.id) %>
+        <% end %>
       </h4>
       <p><%= date_for video.created_at %></p>
       <% if current_user.admin? %>
