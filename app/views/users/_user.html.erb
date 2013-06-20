@@ -2,6 +2,12 @@
   <div class="span12">
     <h3><%= link_to user.username, user %></h3>
     <p class="muted">Since <%= user.created_at.strftime("%A, %b %-d %Y,%l:%M %p") %></p>
+    <% if current_user.admin? %>
+      <div class="actions">
+        <%= link_to "Edit", edit_user_path(user) %>
+        <%= link_to "Delete", user, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
+      </div>
+    <% end %>
   </div>
 </div>
 <hr>
