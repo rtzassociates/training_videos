@@ -17,6 +17,8 @@
 <h4>Currently Available Topics:</h4>
 <% if current_user.admin? %>
   <p><%= link_to 'Change Order', order_videos_path %></p>
+<% else %>
+  <p><%= link_to 'Sort by most recent', videos_path(:order => 'recent') %></p>
 <% end %>
 <br>
 

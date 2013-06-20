@@ -37,6 +37,9 @@
           <% flash.each do |name, msg| %>
             <div class="alert alert-<%= name %>">
               <%= msg %>
+              <div id="alert-dismiss" class="muted pull-right">
+                <i class="icon-remove"></i>
+              </div>
             </div> 
           <% end %>
         </div>

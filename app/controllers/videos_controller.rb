@@ -5,7 +5,11 @@ class VideosController < ApplicationController
   before_filter :viewer_required
   
   def index
-    @videos = Video.order("position").page(params[:page]).per_page(25)
+    if params[:order] == "recent"
+      @videos = Video.order("created_at DESC").page(params[:page]).per_page(25)
+    else
+      @videos = Video.order("position").page(params[:page]).per_page(25)
+    end
   end
   
   def show

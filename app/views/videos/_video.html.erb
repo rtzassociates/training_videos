@@ -4,13 +4,17 @@
       <h4 class="media-heading">
         <%= index + 1%>. 
         <% if current_user.admin? %>
-          <%= link_to video.name, video %>
+          <%= link_to video.name.titleize, video %>
         <% else %>  
-          <%= link_to video.name, new_viewing_path(:video_id => video.id) %>
+          <%= link_to video.name.titleize, new_viewing_path(:video_id => video.id) %>
         <% end %>
       </h4>
       <p><%= date_for video.created_at %></p>
       <% if current_user.admin? %>
+        <p class="muted">
+          <%= pluralize video.viewings.count, 'view' %> |
+          <%= pluralize video.comments.count, 'comment' %>
+        </p>
         <div class="actions">
           <%= link_to 'Edit', edit_video_path(video) %>
           <%= link_to 'Delete', video, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>

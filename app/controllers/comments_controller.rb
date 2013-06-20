@@ -17,4 +17,10 @@ class CommentsController < ApplicationController
       redirect_to videos_path
     end
   end
+  
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to video_path(@comment.video), :notice => "Comment deleted"
+  end
 end

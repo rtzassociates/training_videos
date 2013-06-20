@@ -10,7 +10,7 @@
 
 <p class="muted"><strong>Trouble viewing this video?</strong> IE8 users please make sure <%= link_to "Adobe Flash Player", "https://get.adobe.com/flashplayer/" %> is installed and up to date.</p>
 
-<h1><%= @video.name %></h1>
+<h1><%= @video.name.titleize %></h1>
 
 <% if @video.pdf.present? %>
   <p><%= link_to "View PDF", @video.pdf_url %></p>
@@ -40,14 +40,26 @@
     <% end %>
   <% else %>
     <h3>Comments</h3>
-    <% @video.comments.each do |comment| %>
-      <% unless comment.content.blank? %>
+    <% if @video.comments.any? %>
+      <% @video.comments.each do |comment| %>
         <div class="comment well">
-          <p class="muted"><%= date_for comment.created_at %></p>
-          <p><strong><%= comment.viewer.name %> said:</strong></p>
-          <p><%= comment.content %><p>
+          <div class="pull-left">
+            <p class="muted"><%= date_for comment.created_at %></p>
+            <p><strong><%= comment.viewer.name %> said:</strong></p>
+            <% if comment.content.blank? %>
+              <p class="muted">Did not leave comment.</p>
+            <% else %>
+              <p><%= comment.content %><p>
+            <% end %>
+          </div>
+          <div class="pull-right actions">
+            <%= link_to "Delete", comment, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
+          </div>
+          <div class="clearfix"></div>
         </div>
       <% end %>
+    <% else%>
+      <p>No comments to show.</p>
     <% end %>
   <% end %>
 </div>
