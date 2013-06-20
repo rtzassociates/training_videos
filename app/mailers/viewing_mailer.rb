@@ -7,7 +7,7 @@ class ViewingMailer < ActionMailer::Base
       attachments["#{@viewing.video.pdf.to_s.split("/").last}"] = File.read("#{Rails.root}/public/#{viewing.video.pdf_url}")
     end
     subject = "Confirmation of GetCare #{viewing.video.name} training session"
-    mail(:to => viewing.viewer.email, :subject => subject)
+    mail(:to => @viewing.viewer.email, :subject => subject)
     mail(:to => "TrainingLACSS@getcare.com", :subject => subject)
   end
   
