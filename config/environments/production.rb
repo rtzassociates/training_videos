@@ -67,4 +67,5 @@ Cachely::Application.configure do
   
   config.action_mailer.default_url_options = {host: "training-lacss.getcare.com"}
   config.time_zone = "Pacific Time (US & Canada)"
+  config.force_ssl = true
 end
