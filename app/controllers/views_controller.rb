@@ -1,2 +1,0 @@
-class ViewsController < ApplicationController
-end
