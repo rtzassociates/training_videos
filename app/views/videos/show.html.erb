@@ -1,10 +1,13 @@
 <div id="video" class="row">
   <% if @video.vimeo_embed.present? %>
-    <div class="span12"><%= raw @video.vimeo_embed %></div>
+    <%= render :template => 'videos/vimeo_embed', :locals => { :vimeo_embed => @video.vimeo_embed } %>
   <% else %>
-    <%= video_tag [@video.video_url], :controls => true, :class => "thumbnail span12" %>
+    <div class="span12">
+      <p>Sorry, but no video is currently available for this training session. Please try again later.</p>
+    </div>
   <% end %>
 </div>
+<p class="muted"><strong>Trouble viewing this video?</strong> IE8 users please make sure <%= link_to "Adobe Flash Player", "https://get.adobe.com/flashplayer/" %> is installed and up to date.</p>
 <h1><%= @video.name %></h1>
 <% if @video.pdf.present? %>
   <p><%= link_to "View PDF", @video.pdf_url %></p>
@@ -26,9 +29,6 @@
         <%= f.text_area :content, :class => "span12", :rows => 3 %>
       </div>
     </div>
-
-    <div class="actions">
-      <%= f.submit "Done", :class => 'btn' %>
-    </div>
+    <%= f.submit "Done", :class => 'btn' %>
   <% end %>
 </div>

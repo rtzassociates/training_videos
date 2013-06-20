@@ -8,23 +8,16 @@
   </div>
   
   <div class="control-group">
-    <%= f.label :pdf, "PDF", :class => "control-label" %>
+    <%= f.label :vimeo_embed, "Vimeo Video ID", :class => "control-label" %>
     <div class="controls">
-      <%= f.file_field :pdf %>
-    </div>
-  </div>
-   
-  <div class="control-group">
-    <%= f.label :video, "Video File", :class => "control-label" %>
-    <div class="controls">
-      <%= f.file_field :video %>
+      <%= f.text_field :vimeo_embed %>
     </div>
   </div>
   
   <div class="control-group">
-    <%= f.label :vimeo_embed, :class => "control-label" %>
+    <%= f.label :pdf, "PDF", :class => "control-label" %>
     <div class="controls">
-      <%= f.text_area :vimeo_embed, :class => "span12", :rows => 6 %>
+      <%= f.file_field :pdf %>
     </div>
   </div>
 
