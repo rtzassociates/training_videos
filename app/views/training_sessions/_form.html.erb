@@ -1,8 +1,8 @@
-<%= form_for @video, :html => { :multipart => :true } do |f| %>
+<%= form_for @training_session, :html => { :multipart => :true } do |f| %>
   
-  <% if @video.errors.any? %>
-    <h3 class="danger">Please correct the following <%= 'error'.pluralize(@video.errors.count) %>:</h3>
-    <% @video.errors.full_messages.each do |error| %>
+  <% if @training_session.errors.any? %>
+    <h3 class="danger">Please correct the following <%= 'error'.pluralize(@training_session.errors.count) %>:</h3>
+    <% @training_session.errors.full_messages.each do |error| %>
       <p class="danger"><%= error %></p>
     <% end %>
     <br>

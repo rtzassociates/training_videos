@@ -1,9 +1,9 @@
 <%= @viewing.viewer.email %>
 
-Thank you for viewing the <%= @viewing.video.name %> training session.  Attached is the PDF from this training section.  We have also provided a copy of the sign-in sheet for your records below.
+Thank you for viewing the <%= @viewing.training_session.name %> training session.  Attached is the PDF from this training section.  We have also provided a copy of the sign-in sheet for your records below.
 
 
-On <%= @viewing.created_at.strftime("%A, %b %-d %Y,%l:%M %p") %> the following individual(s) from <%= @viewing.viewer.user.username %> viewed the <%= @viewing.video.name %> training session:
+On <%= @viewing.created_at.strftime("%A, %b %-d %Y,%l:%M %p") %> the following individual(s) from <%= @viewing.viewer.user.username %> viewed the <%= @viewing.training_session.name %> training session:
 
 
 Primary participant:

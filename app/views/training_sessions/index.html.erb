@@ -1,7 +1,7 @@
 <h1>All Training Sessions</h1>
 
 <% if current_user.admin? %>
-  <%= link_to 'Add A Video', new_video_path, :class => "btn btn-large btn-success" %>
+  <%= link_to 'Add A Training Session', new_training_session_path, :class => "btn btn-large btn-success" %>
 <% end %>
 <hr>
 
@@ -15,21 +15,23 @@
 <% end %>
 
 <h4>Currently Available Topics:</h4>
+
 <% if current_user.admin? %>
-  <p><%= link_to 'Change Order', order_videos_path %></p>
-<% else %>
-  <p><%= link_to 'Sort by most recent', videos_path(:order => 'recent') %></p>
+  <p><%= link_to 'Change Order', order_training_sessions_path %></p>
 <% end %>
+
+<p><%= link_to 'Sort by most recent', training_sessions_path(:order => 'recent') %></p>
+
 <br>
 
-<% if @videos.any? %>
-  <div id="videos">
-    <% @videos.each_with_index do |video, index| %>
-      <%= render :partial => video, :locals => { :index => index } %>
+<% if @training_sesions.any? %>
+  <div id="training_sessions">
+    <% @training_sesions.each_with_index do |training_session, index| %>
+      <%= render :partial => training_session, :locals => { :index => index } %>
     <% end %>
   </div>
 <% else %>
   <p>Nothing to show</p>
 <% end %>
 
-<%= will_paginate @videos %>
+<%= will_paginate @training_sessions %>

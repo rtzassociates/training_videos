@@ -1,23 +1,23 @@
-<div class="video">
+<div class="training_session">
   <div class="media">
     <div class="media-body">
       <h4 class="media-heading">
-        <%= index + 1%>. 
+        <%= index + 1 %>. 
         <% if current_user.admin? %>
-          <%= link_to video.name.titleize, video %>
+          <%= link_to training_session.name.titleize, training_session %>
         <% else %>  
-          <%= link_to video.name.titleize, new_viewing_path(:video_id => video.id) %>
+          <%= link_to training_session.name.titleize, new_viewing_path(:training_session_id => training_session.id) %>
         <% end %>
       </h4>
-      <p><%= date_for video.created_at %></p>
+      <p><%= date_for training_session.created_at %></p>
       <% if current_user.admin? %>
         <p class="muted">
-          <%= pluralize video.viewings.count, 'view' %> |
-          <%= pluralize video.comments.count, 'comment' %>
+          <%= pluralize training_session.viewings.count, 'view' %> |
+          <%= pluralize training_session.comments.count, 'comment' %>
         </p>
         <div class="actions">
-          <%= link_to 'Edit', edit_video_path(video) %>
-          <%= link_to 'Delete', video, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
+          <%= link_to 'Edit', edit_training_session_path(training_session) %>
+          <%= link_to 'Delete', training_session, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
         </div>
       <% end %>
     </div>

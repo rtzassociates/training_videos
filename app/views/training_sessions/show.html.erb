@@ -1,6 +1,6 @@
-<div id="video" class="row">
-  <% if @video.vimeo_embed.present? %>
-    <%= render :template => 'videos/vimeo_embed', :locals => { :vimeo_embed => @video.vimeo_embed } %>
+<div id="training_session" class="row">
+  <% if @training_sesion.vimeo_embed.present? %>
+    <%= render :template => 'training_sessions/vimeo_embed', :locals => { :vimeo_embed => @training_session.vimeo_embed } %>
   <% else %>
     <div class="span12">
       <p>Sorry, but no video is currently available for this training session. Please try again later.</p>
@@ -10,16 +10,16 @@
 
 <p class="muted"><strong>Trouble viewing this video?</strong> IE8 users please make sure <%= link_to "Adobe Flash Player", "https://get.adobe.com/flashplayer/" %> is installed and up to date.</p>
 
-<h1><%= @video.name.titleize %></h1>
+<h1><%= @training_session.name.titleize %></h1>
 
-<% if @video.pdf.present? %>
-  <p><%= link_to "View PDF", @video.pdf_url %></p>
+<% if @training_session.pdf.present? %>
+  <p><%= link_to "View PDF", @training_session.pdf_url %></p>
 <% end %>
 
 <% if current_user.admin? %>
   <div class="actions">
-    <%= link_to "Edit", edit_video_path(@video) %>
-    <%= link_to "Delete", @video, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
+    <%= link_to "Edit", edit_training_session_path(@training_session) %>
+    <%= link_to "Delete", @training_session, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
   </div>
 <% end %>
 
@@ -29,7 +29,7 @@
   <% if current_viewer %>
     <h3>Leave a comment</h3>
     <%= form_for @comment do |f| %>
-      <%= f.hidden_field :video_id, :value => @video.id %>
+      <%= f.hidden_field :training_session_id, :value => @training_session.id %>
       <%= f.hidden_field :viewer_id, :value => current_viewer.id %>
       <div class="control-group">
         <div class="controls">
@@ -40,8 +40,8 @@
     <% end %>
   <% else %>
     <h3>Comments</h3>
-    <% if @video.comments.any? %>
-      <% @video.comments.each do |comment| %>
+    <% if @training_session.comments.any? %>
+      <% @training_session.comments.each do |comment| %>
         <div class="comment well">
           <div class="pull-left">
             <p class="muted"><%= date_for comment.created_at %></p>

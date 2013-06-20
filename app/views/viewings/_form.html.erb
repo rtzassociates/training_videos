@@ -1,7 +1,7 @@
 <%= form_for @viewing do |f| %>
   <%= error_messages_for @viewer %>
   
-  <%= f.hidden_field :video_id, :value => params[:video_id] %>
+  <%= f.hidden_field :training_session_id, :value => params[:training_session_id] %>
   <%= f.hidden_field :viewer_id, :value => current_viewer.id %>
   
   <div class="control-group">
