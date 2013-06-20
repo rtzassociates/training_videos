@@ -1,27 +1,22 @@
 Cachely::Application.routes.draw do
-  
-  get "viewings/new"
-
-  get "viewers/new"
 
   resources :users
-  resources :videos do
+  resources :training_sessions do
     collection do
       get :order
       post :sort
     end
   end
+  
   resources :sessions
   resources :viewers
   resources :viewings
   resources :comments
   
-  match "join" => "users#new"
   match "login" => "sessions#new"
   match "signout" => "sessions#destroy"
   
-  get 'pages/home'
-  root to: 'videos#index'
+  root to: 'training_sessions#index'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

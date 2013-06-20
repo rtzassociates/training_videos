@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      @user.create_profile
       login @user
       redirect_to users_path, :notice => "Your account was successfully created"
     else

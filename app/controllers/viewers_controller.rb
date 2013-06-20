@@ -9,7 +9,7 @@ class ViewersController < ApplicationController
     @viewer = Viewer.new(params[:viewer])
     if @viewer.save
       cookies[:viewer_id] = @viewer.id
-      redirect_to videos_path
+      redirect_to training_sessions_path
     else
       render 'new'
     end

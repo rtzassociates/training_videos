@@ -3,9 +3,6 @@
     <div class="span9">
       <h1><%= @user.username %></h1>
       <p class="muted">Since <%= @user.created_at.strftime("%A, %b %-d %Y,%l:%M %p") %></p>
-      <p class="muted">
-        <span class="stat"><%= pluralize @user.videos.count, 'video' %></span>
-      </p>
       <% if can? :manage, @user %>
         <div class="actions">
           <%= link_to "Account Settings", edit_user_path(@user) %>

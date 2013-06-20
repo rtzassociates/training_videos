@@ -1,5 +1,5 @@
 <div id="training_session" class="row">
-  <% if @training_sesion.vimeo_embed.present? %>
+  <% if @training_session.vimeo_embed.present? %>
     <%= render :template => 'training_sessions/vimeo_embed', :locals => { :vimeo_embed => @training_session.vimeo_embed } %>
   <% else %>
     <div class="span12">
@@ -7,6 +7,8 @@
     </div>
   <% end %>
 </div>
+
+<br>
 
 <p class="muted"><strong>Trouble viewing this video?</strong> IE8 users please make sure <%= link_to "Adobe Flash Player", "https://get.adobe.com/flashplayer/" %> is installed and up to date.</p>
 

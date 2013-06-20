@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
   authorize_resource
+  
   def new
     @tag = Tag.new
   end

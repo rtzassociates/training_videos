@@ -24,9 +24,9 @@
 
 <br>
 
-<% if @training_sesions.any? %>
+<% if @training_sessions.any? %>
   <div id="training_sessions">
-    <% @training_sesions.each_with_index do |training_session, index| %>
+    <% @training_sessions.each_with_index do |training_session, index| %>
       <%= render :partial => training_session, :locals => { :index => index } %>
     <% end %>
   </div>

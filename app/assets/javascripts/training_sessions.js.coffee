@@ -1,5 +1,5 @@
 jQuery ->
-  $('#videos').sortable(
+  $('#training_sessions').sortable(
     axis: 'y'
     handle: '.handle'
     update: ->

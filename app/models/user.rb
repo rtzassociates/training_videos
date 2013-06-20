@@ -3,25 +3,16 @@ class User < ActiveRecord::Base
   attr_accessor :password
   before_save :prepare_password
   
+  validates_uniqueness_of :username
+  
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
   validates_length_of :password, :minimum => 4, :allow_blank => true
   
-  has_many :videos, :dependent => :destroy
-  has_many :categories, :dependent => :destroy
-  has_one :profile, :dependent => :destroy
+  has_many :training_sessions
+  has_many :viewers
   
   default_scope :order => "username ASC"
-
-  has_many :views
-  
-  def favorite_videos
-    Video.joins(:favorites).where(:favorites => { :user_id => self.id, :favoriteable_type => "Video" }).order('favorites.created_at DESC')
-  end
-  
-  def favorite_for(obj)
-    Favorite.where(:user_id => self.id, :favoriteable_id => obj.id, :favoriteable_type => obj.class).first
-  end
   
   def self.authenticate(username, pass)
     user = find_by_username(username)

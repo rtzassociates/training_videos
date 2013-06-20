@@ -1,3 +1,17 @@
-#video {
+#training_sessions {
   margin-bottom: 2em;
+}
+
+#training_sessions li {
+  padding: 5px;
+}
+
+#training_sessions .handle { 
+  font-size: 12px; 
+  color: #777; 
+  cursor: move;
+}
+
+ul#training_sessions {
+  font-size: large;
 }

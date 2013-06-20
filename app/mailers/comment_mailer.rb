@@ -3,7 +3,7 @@ class CommentMailer < ActionMailer::Base
   
   def comment_email(comment)
     @comment = comment
-    subject = "Comment for #{comment.video.name} by #{comment.viewer.name}"
+    subject = "Comment for #{comment.training_session.name} by #{comment.viewer.name}"
     mail(:to => "TrainingLACSS@getcare.com", :subject => subject)
   end
   

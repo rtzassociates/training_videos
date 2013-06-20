@@ -9,7 +9,7 @@
           <%= link_to training_session.name.titleize, new_viewing_path(:training_session_id => training_session.id) %>
         <% end %>
       </h4>
-      <p><%= date_for training_session.created_at %></p>
+      <p class="muted">Added on <%= date_for training_session.created_at %></p>
       <% if current_user.admin? %>
         <p class="muted">
           <%= pluralize training_session.viewings.count, 'view' %> |
@@ -20,6 +20,7 @@
           <%= link_to 'Delete', training_session, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
         </div>
       <% end %>
+      <p><%= link_to 'View Video', new_viewing_path(:training_session_id => training_session.id) %></p>
     </div>
   </div>
   <hr>

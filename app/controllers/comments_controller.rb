@@ -14,13 +14,13 @@ class CommentsController < ApplicationController
       else
         flash[:notice] = "Thanks for viewing!"
       end
-      redirect_to videos_path
+      redirect_to training_sessions_path
     end
   end
   
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to video_path(@comment.video), :notice => "Comment deleted"
+    redirect_to training_sessions_path(@comment.training_session), :notice => "Comment deleted"
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130620193754) do
+ActiveRecord::Schema.define(:version => 20130620225803) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(:version => 20130620193754) do
   create_table "comments", :force => true do |t|
     t.integer  "viewer_id"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "video_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "training_session_id"
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -70,6 +70,20 @@ ActiveRecord::Schema.define(:version => 20130620193754) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "training_sessions", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.text     "description"
+    t.string   "thumbnail"
+    t.boolean  "success"
+    t.string   "pdf"
+    t.text     "vimeo_embed"
+    t.integer  "position"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "password_hash"
@@ -86,21 +100,6 @@ ActiveRecord::Schema.define(:version => 20130620193754) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "videos", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "video"
-    t.integer  "user_id"
-    t.integer  "category_id"
-    t.text     "description"
-    t.string   "thumbnail"
-    t.boolean  "success"
-    t.string   "pdf"
-    t.text     "vimeo_embed"
-    t.integer  "position"
-  end
-
   create_table "viewers", :force => true do |t|
     t.integer  "user_id"
     t.string   "email"
@@ -112,9 +111,9 @@ ActiveRecord::Schema.define(:version => 20130620193754) do
   create_table "viewings", :force => true do |t|
     t.integer  "viewer_id"
     t.string   "participants"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "video_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "training_session_id"
   end
 
   create_table "views", :force => true do |t|

@@ -20,6 +20,9 @@ class VideoUploader < CarrierWave::Uploader::Base
     %w(mp4 m4v)
   end
   
+  #   TO ENABLE ENCODING, YOU'LL NEED TO INSTALL FFMPEG ON THE SERVER
+  #   ALONG WITH ALL THE NECESSARY ENCODING LIBRARIES
+  #
   #   version :mp4 do
   #     process :encode_video => [:mp4, resolution: :same]
   #     def full_filename(for_file)
