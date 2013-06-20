@@ -1,0 +1,24 @@
+<%= form_for @viewer do |f| %>
+  <%= error_messages_for @viewer %>
+  
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    
+    <div class="control-group">
+      <%= f.label :name, 'Name', :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :name, :placeholder => "Name", :autocomplete => "off" %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :email, 'Email Address', :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :email, :placeholder => "Email Address", :autocomplete => "off" %>
+      </div>
+    </div>
+    
+    <div class="actions">
+      <%= f.submit 'Continue', :class => 'btn' %>
+    </div>
+    
+<% end %>

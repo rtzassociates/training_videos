@@ -1,0 +1,18 @@
+<div class="row">
+  <div id="login" class="span8">
+    <div class="page-header"> 
+      <h1>Log in</h2>
+      <hr>
+      <%= form_tag sessions_path, :class => "login" do %>
+      <div id="inputs" class="large">
+        <%= label_tag :username, "Login", :class => "control-label" %>
+        <%= text_field_tag :username, params[:username] %>
+        <%= label_tag :password, "Password", :class => "control-label" %>
+        <%= password_field_tag :password, params[:password] %>
+      </div>
+      <div class="actions">
+        <%= submit_tag "Log in", :class => 'btn' %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+$("#delete_favorite").replaceWith("<%= j render(:partial => 'favorites/new') %>");
+$('#new_favorite_link').click(function(){
+    $('#new_favorite').submit();
+    return false;
+});
