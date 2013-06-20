@@ -1,5 +1,5 @@
 class Video < ActiveRecord::Base
-  attr_accessible :video, :name, :tag_tokens, :user_id, :category_id, :thumbnail, :pdf, :vimeo_embed
+  attr_accessible :video, :name, :user_id, :pdf, :vimeo_embed
   
   attr_reader :tag_tokens
   
@@ -19,6 +19,9 @@ class Video < ActiveRecord::Base
   has_many :viewings, :dependent => :destroy
   
   has_one :comment
+  
+  validates :name, :presence => true
+  validates :user_id, :presence => true
 
   def name
     read_attribute(:name).nil? ? File.basename(video.filename, '.*').titleize : read_attribute(:name) 

@@ -9,12 +9,10 @@ class User < ActiveRecord::Base
   
   has_many :videos, :dependent => :destroy
   has_many :categories, :dependent => :destroy
-  has_one :agency
   has_one :profile, :dependent => :destroy
   
   default_scope :order => "username ASC"
-  
-  has_many :favorites
+
   has_many :views
   
   def favorite_videos
