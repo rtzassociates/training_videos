@@ -11,7 +11,8 @@ class ViewingsController < ApplicationController
   def create
     @viewing = Viewing.new(params[:viewing])
     if @viewing.save
-      ViewingMailer.viewing_receipt(@viewing).deliver
+      ViewingMailer.viewing_receipt(@viewing, current_viewer.email).deliver
+      ViewingMailer.viewing_receipt(@viewing, "traininglacss@getcare.com").deliver
       redirect_to @viewing.video
     else
       render 'new'
