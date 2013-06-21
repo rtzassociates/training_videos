@@ -5,8 +5,8 @@ class ViewersController < ApplicationController
     @viewer = Viewer.new
   end
   
-  def create
-    @viewer = Viewer.authenticate(params[:viewer][:name], params[:viewer][:email])  
+  def create  
+    @viewer = Viewer.find_by_email(params[:viewer][:email])
     if @viewer
       store_viewer @viewer
     else

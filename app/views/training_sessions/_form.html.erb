@@ -24,6 +24,9 @@
   
   <div class="control-group">
     <%= f.label :pdf, "PDF", :class => "control-label" %>
+    <% if @training_session.pdf.present? %>
+      <p class="muted"><%= @training_session.pdf_name %></p>
+    <% end %>
     <div class="controls">
       <%= f.file_field :pdf %>
     </div>

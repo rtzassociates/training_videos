@@ -20,9 +20,4 @@ class Viewer < ActiveRecord::Base
     read_attribute(:email).downcase
   end
   
-  def self.authenticate(name, email)
-    viewer = find_by_name(name.downcase)
-    return viewer if viewer && viewer.email == email.downcase
-  end
-  
 end

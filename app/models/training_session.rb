@@ -11,4 +11,9 @@ class TrainingSession < ActiveRecord::Base
   validates :name, :presence => true
   validates :user_id, :presence => true
   validates :vimeo_embed, :presence => true
+  
+  def pdf_name
+    self.pdf.to_s.split("/").last
+  end
+  
 end
