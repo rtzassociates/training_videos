@@ -6,12 +6,17 @@ class ViewersController < ApplicationController
   end
   
   def create
-    @viewer = Viewer.new(params[:viewer])
-    if @viewer.save
-      cookies[:viewer_id] = @viewer.id
-      redirect_to training_sessions_path
+    @viewer = Viewer.authenticate(params[:viewer][:name], params[:viewer][:email])  
+    if @viewer
+      store_viewer @viewer
     else
-      render 'new'
+      @viewer = Viewer.new(params[:viewer])
+      if @viewer.save
+        store_viewer @viewer
+      else
+        render 'new'
+      end
     end
   end
+  
 end
