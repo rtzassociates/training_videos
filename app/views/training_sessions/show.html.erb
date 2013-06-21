@@ -45,15 +45,16 @@
     <% if @training_session.comments.any? %>
       <% @training_session.comments.each do |comment| %>
         <div class="comment well">
-          <div class="pull-left">
-            <p class="muted"><%= date_for comment.created_at %></p>
-            <p><strong><%= comment.viewer.name %> said:</strong></p>
-            <% if comment.content.blank? %>
-              <p class="muted">Did not leave comment.</p>
-            <% else %>
-              <p><%= comment.content %><p>
-            <% end %>
-          </div>
+          <h4>
+            <%= comment.viewer.name.capitalize %>
+            <span class="viewer-user muted"> (<%= comment.viewer.user.username %>)</span>
+          </h4>
+          <p class="muted">On <%= date_for comment.created_at %></p>
+          <% if comment.content.blank? %>
+            <p class="muted">Did not leave comment.</p>
+          <% else %>
+            <p><%= comment.content %><p>
+          <% end %>
           <div class="pull-right actions">
             <%= link_to "Delete", comment, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
           </div>

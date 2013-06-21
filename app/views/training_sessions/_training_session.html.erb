@@ -21,7 +21,11 @@
           <%= link_to 'Delete', training_session, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
         </div>
       <% end %>
-      <p><strong><%= link_to 'View Video', new_viewing_path(:training_session_id => training_session.id) %></strong></p>
+      <% if current_user.admin? %>
+        <p><strong><%= link_to 'View Video', training_session %></strong></p>
+      <% else %>
+        <p><strong><%= link_to 'View Video', new_viewing_path(:training_session_id => training_session.id) %></strong></p>
+      <% end %>
     </div>
   </div>
   <hr>

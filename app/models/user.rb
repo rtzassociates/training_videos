@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates_length_of :password, :minimum => 4, :allow_blank => true
   
   has_many :training_sessions
-  has_many :viewers
+  has_many :viewers, :dependent => :destroy
   
   default_scope :order => "username ASC"
   
