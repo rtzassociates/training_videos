@@ -19,7 +19,12 @@
 <% if current_user.admin? %>
   <%= link_to 'Change Order', order_training_sessions_path, :class => "action" %>
 <% end %>
-<%= link_to 'Sort by most recent', training_sessions_path(:order => 'recent'), :class => "action" %>
+
+<% if params[:order] == "desc" %>
+  <%= link_to 'Oldest first', training_sessions_path(:order => 'asc'), :class => "action" %>
+<% else %>
+  <%= link_to 'Newest first', training_sessions_path(:order => 'desc'), :class => "action" %>
+<% end %>
 </p>
 
 <br>

@@ -5,8 +5,10 @@ class TrainingSessionsController < ApplicationController
   before_filter :viewer_required
   
   def index
-    if params[:order] == "recent"
+    if params[:order] == "desc"
       @training_sessions = TrainingSession.order("created_at DESC").page(params[:page]).per_page(25)
+    elsif params[:order] == "asc"
+      @training_sessions = TrainingSession.order("created_at ASC").page(params[:page]).per_page(25)
     else
       @training_sessions = TrainingSession.order("position").page(params[:page]).per_page(25)
     end
