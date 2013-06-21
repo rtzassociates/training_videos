@@ -64,7 +64,7 @@ class TrainingSessionsController < ApplicationController
   
   def viewer_required
     unless current_user.admin?
-      redirect_to new_viewer_url if current_viewer.nil?
+      redirect_to(new_viewer_url, :notice => "Please provide your name and email address to continue") if current_viewer.nil?
     end
   end
   
