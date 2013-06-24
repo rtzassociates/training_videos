@@ -12,7 +12,7 @@
 
 <p class="muted"><strong>Trouble viewing this video?</strong> IE8 users please make sure <%= link_to "Adobe Flash Player", "https://get.adobe.com/flashplayer/" %> is installed and up to date.</p>
 
-<h2><%= @training_session.name.titleize %></h2>
+<h2><%= @training_session.name %></h2>
 
 <% if @training_session.pdf.present? %>
   <p><%= link_to "View PDF", @training_session.pdf_url %></p>

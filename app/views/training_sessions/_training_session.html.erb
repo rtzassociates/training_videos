@@ -3,9 +3,9 @@
     <div class="media-body">
       <h3 class="media-heading">
         <% if current_user.admin? %>
-          <%= link_to "#{index + 1}. #{training_session.name.titleize}", training_session %>
+          <%= link_to "#{index + 1}. #{training_session.name}", training_session %>
         <% else %>  
-          <%= link_to "#{index + 1}. #{training_session.name.titleize}", new_viewing_path(:training_session_id => training_session.id) %>
+          <%= link_to "#{index + 1}. #{training_session.name}", new_viewing_path(:training_session_id => training_session.id) %>
         <% end %>
       </h3>
       <p class="muted">
