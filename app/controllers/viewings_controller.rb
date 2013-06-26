@@ -13,7 +13,7 @@ class ViewingsController < ApplicationController
     if @viewing.save
       ViewingMailer.viewing_receipt(@viewing, current_viewer.email).deliver
       ViewingMailer.viewing_receipt(@viewing, "traininglacss@getcare.com").deliver
-      redirect_to @viewing.training_session
+      redirect_to training_session_path(@viewing.training_session, :viewing_id => @viewing.id)
     else
       render 'new'
     end

@@ -1,0 +1,14 @@
+<tr>
+  <td><%= date_for viewing.created_at %></td>
+  <td><%= link_to viewing.training_session.name, 
+                  training_session_path(viewing.training_session, :viewing_id => viewing.id) %>
+  </td>
+  <td><%= viewing.participants %></td>
+  <td>
+    <% if viewing.completed_at %>
+      <span class="completed">
+        <i class="icon-ok"> Completed</i>
+      </span>
+    <% end %>
+  </td>
+</tr>

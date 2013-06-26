@@ -1,15 +1,19 @@
-<h1>Sort Training Sessions</h1>
-<hr>
-<ul id="training_sessions" data-update-url="<%= sort_training_sessions_url %>">
-<% @training_sessions.each do |training_session| %>
-  <%= content_tag_for :li, training_session do %>
-    <span class="handle">[drag]</span>
-    <%= link_to h(training_session.name), training_session %>
+<div class="heading">
+  <h1>Sort Training Sessions</h1>
+  <p class="muted">Drag and drop training sessions to reorder, then click "done".</p>
+  <hr>
+</div>
+<div id="order_training_sessions">
+  <ul id="training_sessions" data-update-url="<%= sort_training_sessions_url %>">
+  <% @training_sessions.each do |training_session| %>
+    <%= content_tag_for :li, training_session do %>
+      <span class="handle">[drag]</span>
+      <%= link_to h(training_session.name), training_session %>
+    <% end %>
   <% end %>
-<% end %>
-</ul>
-<br>
-
-<div class="actions">
-  <%= link_to "Done", training_sessions_url, :class => "btn" %>
+  </ul>
+  
+  <div class="actions">
+    <%= link_to "Done", training_sessions_url, :class => "btn" %>
+  </div>
 </div>

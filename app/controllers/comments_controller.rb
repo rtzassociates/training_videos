@@ -7,15 +7,15 @@ class CommentsController < ApplicationController
   
   def create
     @comment = Comment.new(params[:comment])
-    if @comment.save
-      if @comment.content.present?
-        flash[:notice] = "Thanks for your comment!"
-        CommentMailer.comment_email(@comment).deliver
-      else
-        flash[:notice] = "Thanks for viewing!"
-      end
-      redirect_to training_sessions_path
+    if params[:comment][:content].present?
+      @comment.save!
+      flash[:notice] = "Thanks for your comment!"
+      CommentMailer.comment_email(@comment).deliver
+    else
+      flash[:notice] = "Thanks for viewing!"
     end
+    Viewing.find(params[:comment][:viewing_id]).complete_viewing!
+    redirect_to training_sessions_path
   end
   
   def destroy

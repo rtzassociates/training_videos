@@ -1,7 +1,8 @@
 <div class="row">
   <div class="user span12">
     <h3><%= link_to user.username, user %></h3>
-    <p class="muted">Since <%= user.created_at.strftime("%A, %b %-d %Y,%l:%M %p") %></p>
+    <p class="muted">Created on <%= user.created_at.strftime("%A, %b %-d %Y,%l:%M %p") %></p>
+    <p class="muted"><%= pluralize user.viewers.count, "viewer" %></p>
     <% if current_user.admin? %>
       <div class="actions pull-right">
         <%= link_to "Edit", edit_user_path(user) %>

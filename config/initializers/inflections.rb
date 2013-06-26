@@ -13,3 +13,8 @@
 # ActiveSupport::Inflector.inflections do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+ActiveSupport::Inflector.inflections do |inflection|
+  inflection.irregular "is", "are"
+  inflection.irregular "has", "have"
+end

@@ -1,0 +1,53 @@
+<% if params[:action] == "update" %>
+  <%= render :template => 'layouts/site_styles', :locals => { :style_setting => @style_setting }%>
+<% end %>
+
+<div class="heading">
+  <h1>Edit Site Styles</h1>
+  <hr>
+</div>
+
+<%= form_for @style_setting do |f| %>
+
+  <% if @style_setting.errors.any? %>
+    <h3 class="danger">Please correct the following <%= 'error'.pluralize(@style_setting.errors.count) %>:</h3>
+    <% @style_setting.errors.full_messages.each do |error| %>
+      <p class="danger"><%= error %></p>
+    <% end %>
+    <br>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :body_background_color, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :body_background_color, :placeholder => "Background Color" %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :footer_background_color, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :footer_background_color, :placeholder => "Background Color" %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :footer_text_color, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :footer_text_color, :placeholder => "Text Color" %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :link_color, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :link_color, :placeholder => "Link Color" %>
+    </div>
+  </div>
+  
+  <div class="actions">
+    <%= submit_tag 'Update', :class => 'btn' %>
+    <%= submit_tag 'Preview', :name => 'preview_button', :class => 'btn' %>
+  </div>
+  
+<% end %>

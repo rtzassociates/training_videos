@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="span12">
+    <div class="heading">
+      <h1><%= @site.name %></h1>
+      <% if current_user.admin? %>
+        <div class="actions">
+          <%= link_to "Edit Site", edit_site_path(@site) %>
+          <%= link_to "Edit Style Settings", edit_site_style_settings_path(@site) %>
+          <%= link_to "Delete", @site, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
+        </div>
+      <% end %>
+      <div class="clearfix"></div>
+      <hr>
+    </div>
+    <div id="site">   
+      <h3><strong>Link to site:</strong></h3>
+      <h3><%= link_to "http://#{@site.subdomain}.getcare.dev", "http://#{@site.subdomain}.getcare.dev"%></h3>
+    </div>
+  </div>
+</div>

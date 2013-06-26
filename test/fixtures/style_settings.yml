@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  body_background_color: MyString
+  footer_background_color: MyString
+  footer_text_color: MyString
+  tenant_id: 1
+
+two:
+  body_background_color: MyString
+  footer_background_color: MyString
+  footer_text_color: MyString
+  tenant_id: 1

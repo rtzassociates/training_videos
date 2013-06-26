@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>LACSS Training</title>
+  <title><%= current_site.name %> Training</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <% unless params[:controller] == "style_settings" && params[:action] == "update" %>
+    <%= render :template => "layouts/site_styles", :locals => { :style_setting => current_site.style_setting } %>
+  <% end %>
 </head>
 <body>
   <div class="container">
-    <div id="banner">
-    </div>
+    <% if current_site.banner_image.present? %>
+      <div id="banner"></div>
+    <% else %>
+      <br>
+      <div class="heading">
+        <h1><%= current_site.name %> Training</h1>
+      </div>
+    <% end %>
   </div>
   <div id="content" class="container">
       <div class="row">
@@ -19,8 +28,9 @@
             <div class="navbar">
               <div class="navbar-inner">
                 <ul class="nav">
-                  <li><%= link_to "View Training Sessions", training_sessions_path %></li>
+                  <li><%= link_to "Training Sessions", training_sessions_path %></li>
                   <li><%= link_to "User List", users_path %></li>
+                  <li><%= link_to "Site List", sites_path %></li>
                   <li><%= link_to "Sign out", signout_path %></li>
                 </ul>
               </div>
@@ -56,8 +66,11 @@
         <div class="span12">
           <%= yield %>
         </div>
-      </div
+      </div>
     </div>
+  </div>
+  <div class="container">
+    <%= render :template => 'layouts/footer' %>
   </div>
 </body>
 </html>

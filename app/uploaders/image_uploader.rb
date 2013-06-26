@@ -29,6 +29,10 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [400, 400]
   end
   
+  version :banner do
+    process resize_to_fill: [940, 160]
+  end
+  
   def default_url
     "/images/fallback/" + [version_name, "background.png"].compact.join('_')
   end

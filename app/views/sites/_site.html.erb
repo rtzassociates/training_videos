@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="site span12">
+    <h3><%= link_to site.name, site %></h3>
+    <p class="muted">Created on <%= site.created_at.strftime("%A, %b %-d %Y,%l:%M %p") %></p>
+    <% if current_user.admin? %>
+      <div class="actions pull-right">
+        <%= link_to "Edit", edit_site_path(site) %>
+        <%= link_to "Delete", site, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
+      </div>
+    <% end %>
+    <div class="clearfix"></div>
+    <hr>
+  </div>
+</div>

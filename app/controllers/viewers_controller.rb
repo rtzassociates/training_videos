@@ -7,6 +7,7 @@ class ViewersController < ApplicationController
   
   def show
     @viewer = Viewer.find(params[:id])
+    @viewings = @viewer.viewings.order("created_at DESC")
   end
   
   def new

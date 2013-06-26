@@ -1,0 +1,38 @@
+<%= form_for @site do |f| %>
+  <% if @site.errors.any? %>
+    <h3 class="danger">Please correct the following <%= 'error'.pluralize(@site.errors.count) %>:</h3>
+    <% @site.errors.full_messages.each do |error| %>
+      <p class="danger"><%= error %></p>
+    <% end %>
+    <br>
+  <% end %>
+
+    <div class="control-group">
+      <%= f.label :name, "Site Name", :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :name, :placeholder => "Site Name", :autocomplete => "off" %>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :subdomain, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :subdomain, :placeholder => "Subdomain" %>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :banner_image, "Banner Image", :class => "control-label" %>
+      <% if @site.banner_image.present? %>
+        <p class="muted"><%= @site.banner_image %></p>
+      <% end %>
+      <div class="controls">
+        <%= f.file_field :banner_image %>
+      </div>
+    </div>
+    
+    <div class="actions">
+      <%= f.submit :class => 'btn' %>
+    </div>
+  
+<% end %>

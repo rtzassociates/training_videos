@@ -1,0 +1,10 @@
+<div class="heading">
+  <h1>All Sites</h1>
+  <br>
+  <p><%= link_to "Add a site", new_site_path, :class => "btn btn-large btn-success" %></p>
+  <hr>
+</div>
+<div id="sites">
+  <%= render @sites %>
+</div>
+<%= will_paginate @sites %>

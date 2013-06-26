@@ -2,15 +2,18 @@
   <div class="span12">
     <div class="heading">
       <h1><%= @user.username %></h1>
-      <p class="muted">Created <%= @user.created_at.strftime("%A, %b %-d %Y,%l:%M %p") %></p>
+      <p class="muted">Created on <%= @user.created_at.strftime("%A, %b %-d %Y,%l:%M %p") %></p>
       <% if can? :manage, @user %>
         <div class="actions">
           <%= link_to "Account Settings", edit_user_path(@user) %>
           <%= link_to "Delete Account", @user, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
         </div>
       <% end %>
+      <hr>
     </div>
     <div id="viewers">
+      <h3>Viewer List</h3>
+      <p class="muted"><%= pluralize @user.viewers.count, "viewer" %> <%= "has".pluralize(@user.viewers.count) %> logged in with this account.</p>
       <%= render @user.viewers %>
     </div>
   </div>

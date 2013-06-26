@@ -16,4 +16,10 @@ class TrainingSession < ActiveRecord::Base
     self.pdf.to_s.split("/").last
   end
   
+  def completed_by?(viewer)
+    viewings.where("viewings.training_session_id = ? 
+                    AND viewings.viewer_id = ? 
+                    AND viewings.completed_at IS NOT NULL",
+                    self.id, viewer.id).any?
+  end
 end

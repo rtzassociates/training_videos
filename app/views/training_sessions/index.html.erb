@@ -2,6 +2,7 @@
   <h1>All Training Sessions</h1>
   
   <% if current_user.admin? %>
+    <br>
     <%= link_to 'Add A Topic', new_training_session_path, :class => "btn btn-large btn-success" %>
   <% end %>
   <hr>
@@ -12,7 +13,6 @@
     <h4>Hi <%= current_viewer.name.capitalize %>,</h4>
     <p>Click on one of the “Select“ buttons below to open a specific training topic. Enter the full names of any other individuals participating in this training session other than yourself (if it’s only you, please leave this field blank) then click on the “Submit Sign-in Sheet” button. A copy of the supplemental PDF documentation will be sent to your email address; you may also open and save the PDF from this page. When ready for the video to begin click the “View Video” button. Use the “HD” and arrow icons on the bottom right of the video to improve the picture quality and expand the video to full-screen. After minimizing the video, you can submit feedback if you’d like (such as comments and questions). Thanks for participating!</p>
   </div>
-  <hr>
 <% end %>
 
 <div class="heading">

@@ -16,6 +16,9 @@ class TrainingSessionsController < ApplicationController
   
   def show
     @training_session = TrainingSession.find(params[:id])
+    if params[:viewing_id].present?
+      @viewing = Viewing.find(params[:viewing_id])
+    end
     @comment = Comment.new
   end
 
@@ -59,6 +62,7 @@ class TrainingSessionsController < ApplicationController
     params[:training_session].each_with_index do |id, index|
       TrainingSession.update_all({position: index+1}, {id: id})
     end
+    flash[:notice] = "Training sessions reordered successfully."
     render nothing: true
   end
   

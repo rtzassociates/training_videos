@@ -1,4 +1,5 @@
 <div class="training_session">
+  <hr>
   <div class="media">
     <div class="media-body">
       <h3 class="media-heading">
@@ -7,12 +8,15 @@
         <% else %>  
           <%= link_to "#{index + 1}. #{training_session.name}", new_viewing_path(:training_session_id => training_session.id) %>
         <% end %>
+        <% if current_viewer && training_session.completed_by?(current_viewer)%>
+          <span class="subheading completed"><i class="icon-ok"> Completed</i></span>
+        <% end %>
       </h3>
       <p class="muted">
-        Added on <%= date_for training_session.created_at %> |
+        Added on <%= date_for training_session.created_at %>
         <% if current_user.admin? %>
-          <%= pluralize training_session.viewings.count, 'view' %> |
-          <%= pluralize training_session.comments.count, 'comment' %>
+          | <%= pluralize training_session.viewings.count, 'view' %>
+          | <%= pluralize training_session.comments.count, 'comment' %>
         <% end %>
       </p>
       <% if current_user.admin? %>
@@ -28,5 +32,4 @@
       <% end %>
     </div>
   </div>
-  <hr>
 </div>
