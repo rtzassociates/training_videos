@@ -21,6 +21,6 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to training_sessions_path(@comment.training_session), :notice => "Comment deleted"
+    redirect_to training_session_path(@comment.training_session), :notice => "Comment deleted"
   end
 end
