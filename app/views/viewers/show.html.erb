@@ -1,5 +1,5 @@
 <div class="heading">
-  <h3><%= link_to @viewer.name.capitalize, @viewer %></h3>
+  <h3><%= link_to @viewer.name.titleize, @viewer %></h3>
   <p class="large"><%= @viewer.email %></p>
   <p class="muted">Signed in with <%= @viewer.user.username %></p>
   <% if current_user.admin? %>

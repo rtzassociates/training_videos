@@ -1,6 +1,6 @@
 <div class="row">
   <div class="viewer span12">
-    <h3><%= link_to viewer.name, viewer %></h3>
+    <h3><%= link_to viewer.name.titleize, viewer %></h3>
     <p><%= viewer.email %></p>
     <p class="muted">Created on <%= viewer.created_at.strftime("%A, %b %-d %Y,%l:%M %p") %></p>
     <% if current_user.admin? %>
