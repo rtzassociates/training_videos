@@ -2,6 +2,7 @@
   <div class="viewer span12">
     <h3><%= link_to viewer.name, viewer %></h3>
     <p><%= viewer.email %></p>
+    <p class="muted">Created on <%= viewer.created_at.strftime("%A, %b %-d %Y,%l:%M %p") %></p>
     <% if current_user.admin? %>
       <div class="actions pull-right">
         <%= link_to "Edit", edit_viewer_path(viewer) %>

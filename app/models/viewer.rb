@@ -2,8 +2,8 @@ class Viewer < ActiveRecord::Base
   attr_accessible :user_id, :name, :email
   
   belongs_to :user
-  has_many :viewings
-  has_many :comments
+  has_many :viewings, :depenent => :destroy
+  has_many :comments, :depenent => :destroy
   
   validates :name, :presence => true
   validates :user_id, :presence => true
