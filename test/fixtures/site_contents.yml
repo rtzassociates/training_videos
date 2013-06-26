@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  training_session_greeting: MyText
+  footer_text: MyText
+  site_id: 1
+
+two:
+  training_session_greeting: MyText
+  footer_text: MyText
+  site_id: 1

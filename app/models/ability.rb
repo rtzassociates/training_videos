@@ -12,6 +12,9 @@ class Ability
       can :create, Comment
       
       cannot :read, User
+      cannot :read, Site
+      cannot :read, SiteContent
+      cannot :read, StyleSetting
     end
   end
 end

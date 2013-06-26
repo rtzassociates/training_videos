@@ -14,8 +14,10 @@ Cachely::Application.routes.draw do
   resources :comments
   resources :sites do
     resource :style_settings
+    resource :site_content
   end
   resources :style_settings
+  resources :site_contents
   
   match "login" => "sessions#new"
   match "signout" => "sessions#destroy"

@@ -1,4 +1,5 @@
 <div id="footer">
+  <% if current_site.site_content.footer_text.present? %>
   <div class="row">
     <div class="span12 footer-top">
 	    <div class="daas-logo pull-left">
@@ -6,12 +7,13 @@
 	    		<img src="/assets/daas.png" alt="Department of Aging and Adult Services">
 	    	</a>
 	    </div>
-	    <div class="daas-description">
-	    	 The Department of Aging and Adult Services (DAAS), is charged with planning, coordinating, providing, and advocating for community-based services for older adults and adults with disabilities. RTZ Associates provides access to these services by ensuring that the information is available online. With a strong working relationship, these partners are committed to providing the most current and accurate information on long-term services and supports in the Bay Area.
+	    <div class="footer-text">
+	    	 <%= current_site.site_content.footer_text %>
 	    </div>
 	    <div class="clearfix"></div>
 	  </div>
 	</div>
+	<% end %>
 	<div class="row">
 	  <div class="footer-bottom" role="about us">
 	  	<div class="span4 pull-left">

@@ -1,0 +1,34 @@
+<div class="heading">
+  <h1>Edit Site Content</h1>
+  <hr>
+</div>
+
+<%= form_for @site_content do |f| %>
+
+  <% if @site_content.errors.any? %>
+    <h3 class="danger">Please correct the following <%= 'error'.pluralize(@site_content.errors.count) %>:</h3>
+    <% @site_content.errors.full_messages.each do |error| %>
+      <p class="danger"><%= error %></p>
+    <% end %>
+    <br>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :training_session_greeting, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_area :training_session_greeting, :placeholder => "Greeting Text...", :class => "span10", :rows => 8 %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :footer_text, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_area :footer_text, :placeholder => "Footer Text...", :class => "span10", :rows => 5 %>
+    </div>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit 'Update', :class => 'btn' %>
+  </div>
+  
+<% end %>

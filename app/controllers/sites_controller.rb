@@ -13,6 +13,7 @@ class SitesController < ApplicationController
     @site = Site.new(params[:site])
     if @site.save
       @site.create_style_setting!
+      @site.create_site_content!
       redirect_to sites_path, :notice => "Site was successfully created"
     else
       render :action => 'new'
