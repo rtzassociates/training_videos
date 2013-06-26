@@ -1,7 +1,7 @@
 <div class="row">
   <div class="span12">
     <div class="heading">
-      <h1><%= @user.username.titleize %></h1>
+      <h1><%= @user.username %></h1>
       <p class="muted">Created on <%= @user.created_at.strftime("%A, %b %-d %Y,%l:%M %p") %></p>
       <% if can? :manage, @user %>
         <div class="actions">
