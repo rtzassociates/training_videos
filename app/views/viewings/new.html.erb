@@ -2,7 +2,7 @@
   <h1>Sign In Sheet</h1>
   <hr>
   <div class="well">
-    <p>Is anyone besides <%= current_viewer.name.capitalize %> participating in <%= @training_session.name %>? If yes, type in names in sign in sheet. Please don't forget to click submit sign in sheet even if you are the only one being trained.</p>
+    <p>Is anyone besides <%= current_viewer.name.titleize %> participating in <%= @training_session.name %>? If yes, type in names in sign in sheet. Please don't forget to click submit sign in sheet even if you are the only one being trained.</p>
 </div>
   </div>
 <%= render 'form' %>

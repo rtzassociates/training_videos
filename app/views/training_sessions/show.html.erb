@@ -93,7 +93,7 @@
           <% @training_session.viewings.each do |viewing| %>
             <tr>
               <td><%= date_for viewing.created_at %></td>
-              <td><%= link_to viewing.viewer.name, 
+              <td><%= link_to viewing.viewer.name.titleize, 
                               viewing.viewer %>
               </td>
               </td>

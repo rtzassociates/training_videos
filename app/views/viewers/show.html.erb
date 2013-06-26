@@ -20,7 +20,7 @@
     <% @viewer.comments.each do |comment| %>
       <div class="comment well">
         <h4>
-          <%= link_to comment.viewer.name.capitalize, comment.viewer %>
+          <%= link_to comment.viewer.name.titleize, comment.viewer %>
           <span class="muted small">Commented on <%= link_to comment.training_session.name, comment.training_session %></span>
         </h4>
         <p class="muted"><%= date_for comment.created_at %></p>
