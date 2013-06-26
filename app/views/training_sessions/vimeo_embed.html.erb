@@ -1,6 +1,8 @@
-<script type="text/javascript">
-  function hideProgress(){ document.getElementById('loader').style.display = 'none'; }
-</script>
-<div id="loader" class="muted" style="padding-left:20px">Please wait for the video to load...</div>
-<iframe class="span12" height="480px" src="https://player.vimeo.com/video/<%= vimeo_embed %>" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen onload="hideProgress()">  
-</iframe>
+<div class="vimeo_embed">
+  <script type="text/javascript">
+    function hideProgress(){ document.getElementById('loader').style.display = 'none'; }
+  </script>
+  <div id="loader" class="muted" style="padding-left:20px">Please wait for the video to load...</div>
+  <iframe width="907px" height="480px" src="https://player.vimeo.com/video/<%= vimeo_embed %>" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen onload="hideProgress()">  
+  </iframe>
+</div>

@@ -1,7 +1,29 @@
 @import "twitter/bootstrap/bootstrap";
 
+@inner-width: 910px;
+
+form {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.comment {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+#instructions {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.vimeo_embed {
+  margin-left: 35px;
+}
+
 form div.actions {
   margin-top: 2em;
+  margin-bottom: 1em;
 }
 
 form label.control-label {
@@ -14,18 +36,19 @@ form div.control-group {
   margin-top: 1em;
 }
 
-.container {
-  margin-bottom: 3em;
+.signout_link {
+  margin-right: 1em;
 }
 
 .alert {
-  margin-top: 1em;
   padding: 1em;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
   border: solid;
   border-color: #CFCFCF;
   border-width: 1px;
+  margin-left: 17px;
+  margin-right: 17px;
 }
 
 h1 form {
@@ -43,6 +66,7 @@ h1 a:hover {
 
 .alert-notice {
   color: green;
+  border-color: green;
   background-color: white;
 }
 
@@ -87,11 +111,14 @@ body {
 
 .container {
   background-color: white;
-  min-height: 1000px;
 }
 
 .control-label {
   margin-bottom: 1em;
+}
+
+#content {
+  min-height: 900px;
 }
 
 #footer {
@@ -100,19 +127,27 @@ body {
   margin-bottom: 1em;
 }
 
-#page {
-  padding: 1em;
-  width: 970px;
+.navbar {
+  width: @inner-width;
+  margin-left: 1em;
+  margin-top: 1em;
 }
 
-.navbar {
-  margin-top: 1em;
-  width: 970px;
+.heading {
+  width: 910px;
+  margin-left: 1em;
+  margin-bottom: 1em;
 }
 
 .btn-large {
-  margin-top: 1em;
   margin-bottom: 1em;
+}
+
+.hint {
+  margin-top: 1em;
+  margin-bottom: 25px;
+  color: green;
+  font-size: large;
 }
 
 #alert-dismiss:hover {
@@ -121,6 +156,35 @@ body {
 
 .action {
   margin-right: 1em;
+}
+
+#banner {
+  background-image: url('/assets/banner.png');
+  height: 160px;
+  margin-bottom: 1em;
+}
+
+#users {
+  padding-left: 1em;
+}
+
+.user {
+  width: @inner-width;
+  padding-right: 1em;
+}
+
+#viewers {
+  padding-left: 1em;
+}
+
+.viewer {
+  width: @inner-width;
+  padding-right: 1em;
+}
+
+.training_session {
+  width: @inner-width;
+  padding-left: 1em;
 }
 
 // Set the correct sprite paths

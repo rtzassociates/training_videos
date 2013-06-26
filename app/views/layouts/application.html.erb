@@ -8,10 +8,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="page" class="container">
+  <div class="container">
     <div id="banner">
-      <%= image_tag 'banner.png' %>
     </div>
+  </div>
+  <div id="content" class="container">
       <div class="row">
         <div class="span12">
           <% if logged_in? && current_user.admin? %>
@@ -25,25 +26,32 @@
               </div>
             </div>
           <% elsif logged_in? %>
-            <br>
-            <ul class="nav pull-right">
-              <li><%= link_to "Sign out", signout_path %></li>
-            </ul>
+            <div class="nav actions pull-right">
+              <% if current_viewer %>
+                <span class="action">Signed in as <%= link_to current_viewer.name.capitalize, current_viewer %></span> 
+                <span class="muted">Not you?</span> 
+              <% end %>
+              <span class="action">
+                <%= link_to "Sign out", signout_path, :class => "signout_link" %>
+              </span>
+          </div>
           <% end %>
         </div>
       </div>
-      <div class="row">
-        <div class="span12">
-          <% flash.each do |name, msg| %>
-            <div class="alert alert-<%= name %>">
-              <%= msg %>
-              <div id="alert-dismiss" class="muted pull-right">
-                <i class="icon-remove"></i>
-              </div>
-            </div> 
-          <% end %>
-        </div>
-      </div>
+      <% if flash.any? %>
+        <% flash.each do |name, msg| %>
+          <div class="row">
+              <div class="span12">
+              <div class="alert alert-<%= name %>">
+                <%= msg %>
+                <div id="alert-dismiss" class="muted pull-right">
+                  <i class="icon-remove"></i>
+                </div>
+              </div> 
+            </div>
+          </div>
+        <% end %>
+      <% end %>
       <div class="row">
         <div class="span12">
           <%= yield %>

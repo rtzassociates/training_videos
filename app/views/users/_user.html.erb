@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="span12">
+  <div class="user span12">
     <h3><%= link_to user.username, user %></h3>
     <p class="muted">Since <%= user.created_at.strftime("%A, %b %-d %Y,%l:%M %p") %></p>
     <% if current_user.admin? %>
@@ -8,6 +8,7 @@
         <%= link_to "Delete", user, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
       </div>
     <% end %>
+    <div class="clearfix"></div>
+    <hr>
   </div>
 </div>
-<hr>

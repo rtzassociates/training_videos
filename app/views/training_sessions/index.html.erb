@@ -1,9 +1,11 @@
-<h1>All Training Sessions</h1>
-
-<% if current_user.admin? %>
-  <%= link_to 'Add A Topic', new_training_session_path, :class => "btn btn-large btn-success" %>
-<% end %>
-<hr>
+<div class="heading">
+  <h1>All Training Sessions</h1>
+  
+  <% if current_user.admin? %>
+    <%= link_to 'Add A Topic', new_training_session_path, :class => "btn btn-large btn-success" %>
+  <% end %>
+  <hr>
+</div>
 
 <% if current_viewer %>
   <div id="instructions" class="well">
@@ -13,21 +15,17 @@
   <hr>
 <% end %>
 
-<h2>Currently Available Topics</h2>
-
-<p>
-<% if current_user.admin? %>
-  <%= link_to 'Change Order', order_training_sessions_path, :class => "action" %>
-<% end %>
-
-<% if params[:order] == "desc" %>
-  <%= link_to 'Oldest first', training_sessions_path(:order => 'asc'), :class => "action" %>
-<% else %>
-  <%= link_to 'Newest first', training_sessions_path(:order => 'desc'), :class => "action" %>
-<% end %>
-</p>
-
-<br>
+<div class="heading">
+  <h2>Currently Available Topics</h2>
+  <% if current_user.admin? %>
+    <%= link_to 'Change Order', order_training_sessions_path, :class => "action" %>
+  <% end %> 
+  <% if params[:order] == "desc" %>
+    <%= link_to 'Oldest first', training_sessions_path(:order => 'asc'), :class => "action" %>
+  <% else %>
+    <%= link_to 'Newest first', training_sessions_path(:order => 'desc'), :class => "action" %>
+  <% end %>
+</div>
 
 <% if @training_sessions.any? %>
   <div id="training_sessions">

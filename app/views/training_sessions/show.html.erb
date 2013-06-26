@@ -10,44 +10,47 @@
 
 <br>
 
-<p class="muted"><strong>Trouble viewing this video?</strong> IE8 users please make sure <%= link_to "Adobe Flash Player", "https://get.adobe.com/flashplayer/" %> is installed and up to date.</p>
-
-<h2><%= @training_session.name %></h2>
-
-<% if @training_session.pdf.present? %>
-  <p><%= link_to "View PDF", @training_session.pdf_url %></p>
-<% end %>
-
-<% if current_user.admin? %>
-  <div class="actions">
-    <%= link_to "Edit", edit_training_session_path(@training_session) %>
-    <%= link_to "Delete", @training_session, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
-  </div>
-<% end %>
-
-<hr>
+<div class="heading">
+  <p class="muted"><strong>Trouble viewing this video?</strong> IE8 users please make sure <%= link_to "Adobe Flash Player", "https://get.adobe.com/flashplayer/" %> is installed and up to date.</p>  
+  <h2><%= @training_session.name %></h2> 
+  <% if @training_session.pdf.present? %>
+    <p><%= link_to "View PDF", @training_session.pdf_url, :class => "link-large" %></p>
+  <% end %> 
+  <% if current_user.admin? %>
+    <div class="actions">
+      <%= link_to "Edit", edit_training_session_path(@training_session) %>
+      <%= link_to "Delete", @training_session, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
+    </div>
+  <% end %>
+  <hr>
+</div>
 
 <div id="comments">
   <% if current_viewer %>
-    <h3>Leave a comment</h3>
+    <div class="heading">
+      <h3>Leave a comment <span class="muted" style="font-size:large; font-weight:normal">(Optional)</span></h3>
+    </div>
     <%= form_for @comment do |f| %>
       <%= f.hidden_field :training_session_id, :value => @training_session.id %>
       <%= f.hidden_field :viewer_id, :value => current_viewer.id %>
       <div class="control-group">
         <div class="controls">
-          <%= f.text_area :content, :class => "span12", :rows => 3 %>
+          <%= f.text_area :content, :class => "span10", :rows => 3 %>
         </div>
       </div>
-      <%= f.submit "Done", :class => 'btn' %>
+      <p class="hint"><i class="icon-ok"></i>
+        Click done to complete this training session.</p>
+      <%= f.submit "Done", :class => 'btn btn-large btn-success' %>
     <% end %>
   <% else %>
-    <h3>Comments</h3>
+    <div class="heading">
+      <h3>Comments</h3>
+    </div>
     <% if @training_session.comments.any? %>
       <% @training_session.comments.each do |comment| %>
         <div class="comment well">
           <h4>
             <%= comment.viewer.name.capitalize %>
-            <span class="viewer-user muted"> (<%= comment.viewer.user.username %>)</span>
           </h4>
           <p class="muted">On <%= date_for comment.created_at %></p>
           <% if comment.content.blank? %>

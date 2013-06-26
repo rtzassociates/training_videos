@@ -1,14 +1,17 @@
-<div class="user">
-  <div class="row">
-    <div class="span9">
+<div class="row">
+  <div class="span12">
+    <div class="heading">
       <h1><%= @user.username %></h1>
-      <p class="muted">Since <%= @user.created_at.strftime("%A, %b %-d %Y,%l:%M %p") %></p>
+      <p class="muted">Created <%= @user.created_at.strftime("%A, %b %-d %Y,%l:%M %p") %></p>
       <% if can? :manage, @user %>
         <div class="actions">
           <%= link_to "Account Settings", edit_user_path(@user) %>
           <%= link_to "Delete Account", @user, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
         </div>
       <% end %>
+    </div>
+    <div id="viewers">
+      <%= render @user.viewers %>
     </div>
   </div>
 </div>

@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="viewer span12">
+    <h3><%= link_to viewer.name, viewer %></h3>
+    <p><%= viewer.email %></p>
+    <% if current_user.admin? %>
+      <div class="actions pull-right">
+        <%= link_to "Edit", edit_viewer_path(viewer) %>
+        <%= link_to "Delete", viewer, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
+      </div>
+    <% end %>
+    <div class="clearfix"></div>
+    <hr>
+  </div>
+</div>

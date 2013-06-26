@@ -1,6 +1,8 @@
-<h1>All Users</h1>
-<p><%= link_to "Add a user", new_user_path, :class => "btn btn-large btn-success" %></p>
-<hr>
+<div class="heading">
+  <h1>All Users</h1>
+  <p><%= link_to "Add a user", new_user_path, :class => "btn btn-large btn-success" %></p>
+  <hr>
+</div>
 <div id="users">
   <%= render @users %>
 </div>
