@@ -19,7 +19,7 @@ class SiteTrainingSessionsController < ApplicationController
     @site_training_session.save
     respond_to do |format|
       format.html { redirect_to site_training_sessions_path,
-                    :notice => "Added To Current Site" }
+                    :notice => "Training session successfully published to site." }
       format.js
     end
   end
@@ -29,7 +29,7 @@ class SiteTrainingSessionsController < ApplicationController
     @site_training_session.destroy
     respond_to do |format|
       format.html { redirect_to site_training_sessions_path,
-                    :notice => "Removed From Current Site" }
+                    :notice => "Training session successfully removed from site." }
       format.js
     end
   end
