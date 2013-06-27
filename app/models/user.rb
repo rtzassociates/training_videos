@@ -15,8 +15,6 @@ class User < ActiveRecord::Base
   
   belongs_to :site
   
-  default_scope :order => "username ASC"
-  
   def self.authenticate(username, pass)
     user = find_by_username(username)
     return user if user && user.password_hash == user.encrypt_password(pass)

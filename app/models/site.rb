@@ -8,9 +8,20 @@ class Site < ActiveRecord::Base
   has_many :site_training_sessions
   has_many :training_sessions, :through => :site_training_sessions
   
+  validates_presence_of :name
+  validates_uniqueness_of :name
+  
+  validates_presence_of :subdomain
+  validates_uniqueness_of :subdomain
+  validates_format_of :subdomain, :with => /^[a-z\d]+(-[a-z\d]+)*$/i
+  
   mount_uploader :banner_image, ImageUploader
   
   def can_view?(training_session)
     site_training_sessions.where(:site_id => self.id, :training_session_id => training_session.id).any?
+  end
+  
+  def banner_image_name
+    self.banner_image.to_s.split("/").last
   end
 end

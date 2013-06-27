@@ -24,6 +24,7 @@ gem 'carrierwave-video'
 gem 'delayed_job_active_record'
 gem 'carrierwave_backgrounder'
 gem 'streamio-ffmpeg'
+gem 'bootstrap-wysihtml5-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

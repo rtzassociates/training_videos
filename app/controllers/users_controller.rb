@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   include SessionsHelper
   
   def index
-    @users = User.page(params[:page]).per_page(50)
+    @users = User.order("username ASC").page(params[:page]).per_page(25)
   end
   
   def new

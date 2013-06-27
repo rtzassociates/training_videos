@@ -1,9 +1,10 @@
 <div class="heading">
   <h1>All Users</h1>
   <hr>
-  <br>
+  <div class="well">
+    Click the "Add a user" button below to create a new user. Users can log into a site, view published training sessions, leave comments, etc. Users can also have "viewers", which are a group of individuals sharing a single user account.
+  </div>
   <p><%= link_to "Add a user", new_user_path, :class => "btn btn-large btn-success" %></p>
-  <hr>
 </div>
 <div id="users">
   <%= render @users %>

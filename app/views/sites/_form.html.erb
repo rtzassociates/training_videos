@@ -1,4 +1,8 @@
 <%= form_for @site do |f| %>
+  <div class="well">
+    When setting up a new site, keep in mind someone in IT will need to create a DNS record for your preferred domain name before clients will be able to reach it.
+  </div>
+
   <% if @site.errors.any? %>
     <h3 class="danger">Please correct the following <%= 'error'.pluralize(@site.errors.count) %>:</h3>
     <% @site.errors.full_messages.each do |error| %>
@@ -24,7 +28,7 @@
     <div class="control-group">
       <%= f.label :banner_image, "Banner Image", :class => "control-label" %>
       <% if @site.banner_image.present? %>
-        <p class="muted"><%= @site.banner_image %></p>
+        <p class="muted"><%= @site.banner_image_name %></p>
       <% end %>
       <div class="controls">
         <%= f.file_field :banner_image %>

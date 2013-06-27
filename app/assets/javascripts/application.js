@@ -15,4 +15,5 @@
 //= require jquery-ui
 //= require chosen-jquery
 //= require twitter/bootstrap
+//= require bootstrap-wysihtml5
 //= require_tree .

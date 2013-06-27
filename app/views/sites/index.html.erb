@@ -1,9 +1,10 @@
 <div class="heading">
   <h1>All Sites</h1>
   <hr>
-  <br>
+  <div class="well">
+    Sites are used to determine what users see what training sessions. Sites can also be used to customize content and look and feel. You can access these settings by choosing a site, clicking on "Edit Style Settings" or "Edit Content".
+  </div>
   <p><%= link_to "Add a site", new_site_path, :class => "btn btn-large btn-success" %></p>
-  <hr>
 </div>
 <div id="sites">
   <%= render @sites %>

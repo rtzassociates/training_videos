@@ -6,14 +6,14 @@
 <% if current_viewer && current_site.site_content.training_session_greeting.present? %>
   <div id="instructions" class="well">
     <h4>Hi <%= current_viewer.name.capitalize %>,</h4>
-    <p><%= current_site.site_content.training_session_greeting %></p>
+    <p><%= raw current_site.site_content.training_session_greeting %></p>
   </div>
 <% end %>
 
 <div class="heading">
   <h3>Currently Available Topics</h3>
   <% if current_user.admin? %>
-    <%= link_to 'Change Order', order_site_training_sessions_path, :class => "action" %>
+    <%= link_to 'Edit Order', order_site_training_sessions_path, :class => "action" %>
   <% end %>
   <% if params[:order] == "desc" %>
     <%= link_to 'Oldest first', site_training_sessions_path(:order => 'asc'), :class => "action" %>

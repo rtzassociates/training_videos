@@ -1,5 +1,6 @@
 <div class="heading">
   <h3><%= link_to @viewer.name.titleize, @viewer %></h3>
+  <p class="muted">Created on <%= @viewer.created_at.strftime("%A, %b %-d %Y,%l:%M %p") %></p>
   <p class="large"><%= @viewer.email %></p>
   <p class="muted">Signed in with <%= @viewer.user.username %></p>
   <% if current_user.admin? %>

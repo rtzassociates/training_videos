@@ -3,7 +3,7 @@ class SitesController < ApplicationController
   include SitesHelper
   
   def index
-    @sites = Site.page(params[:page]).per_page(50)
+    @sites = Site.order("name ASC").page(params[:page]).per_page(50)
   end
   
   def new

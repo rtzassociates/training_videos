@@ -4,9 +4,9 @@
       <h1><%= @site.name %></h1>
       <% if current_user.admin? %>
         <div class="actions">
-          <%= link_to "Edit", edit_site_path(@site) %>
-          <%= link_to "Style Settings", edit_site_style_settings_path(@site) %>
-          <%= link_to "Site Content", edit_site_site_content_path(@site) %>
+          <%= link_to "Edit Site", edit_site_path(@site) %>
+          <%= link_to "Edit Style Settings", edit_site_style_settings_path(@site) %>
+          <%= link_to "Edit Content", edit_site_site_content_path(@site) %>
           <%= link_to "Delete", @site, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
         </div>
       <% end %>
@@ -14,8 +14,17 @@
       <hr>
     </div>
     <div id="site">   
-      <h3><strong>Link to site:</strong></h3>
-      <h3><%= link_to "#{domain_name_for(@site)}", "#{domain_name_for(@site)}" %></h3>
+      <h3><strong>Link to site</strong></h3>
+      <h4><%= link_to "#{domain_name_for(@site)}", "#{domain_name_for(@site)}" %></h4>
     </div>
+    <% if @site.users.any? %>
+      <div class="heading">
+        <hr>
+        <h3>Users</h3>
+      </div>
+      <div id="users">
+        <%= render @site.users %>
+      </div>
+    <% end %>
   </div>
 </div>

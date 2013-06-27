@@ -1,8 +1,10 @@
 <div class="heading">
-  <h1>Training Library</h1>
+  <h1>Training Session Library</h1>
   <hr>
+  <div class="well">
+    The training session library is where you manage your training sessions. Click "Add A Topic" to create a new training session. Click "Publish" to publish a training session. Published training sessions will made available to all users of the current site.
+  </div>
   <% if current_user.admin? %>
-    <br>
     <%= link_to 'Add A Topic', new_training_session_path, :class => "btn btn-large btn-success" %>
   <% end %> 
   <% if params[:order] == "desc" %>
