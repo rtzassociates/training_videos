@@ -2,5 +2,5 @@
     :html => { :method => :delete,  :class => 'inline' } do |f| %>
     <%= f.hidden_field :training_session_id, :value => training_session_id %>
     <%= f.hidden_field :site_id, :value  => current_site.id %>
-  <%= f.submit "Remove From Site", :class => "btn" %>
+  <%= f.submit "Unpublish", :class => "btn" %>
 <% end %>
