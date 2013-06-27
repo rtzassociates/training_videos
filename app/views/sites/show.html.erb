@@ -15,7 +15,7 @@
     </div>
     <div id="site">   
       <h3><strong>Link to site:</strong></h3>
-      <h3><%= link_to "http://#{@site.subdomain}.getcare.dev", "http://#{@site.subdomain}.getcare.dev"%></h3>
+      <h3><%= link_to "#{domain_name_for(@site)}", "#{domain_name_for(@site)}" %></h3>
     </div>
   </div>
 </div>

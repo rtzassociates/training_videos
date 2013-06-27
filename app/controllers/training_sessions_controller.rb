@@ -1,21 +1,19 @@
 class TrainingSessionsController < ApplicationController
   
   authorize_resource
-  
-  before_filter :viewer_required
-  
+    
   def index
-    if params[:order] == "desc"
-      @training_sessions = TrainingSession.order("created_at DESC").page(params[:page]).per_page(25)
-    elsif params[:order] == "asc"
+    redirect_to(root_url, :alert => "You are not authorized to access this page.") unless current_user.admin?
+    if params[:order] == "asc"
       @training_sessions = TrainingSession.order("created_at ASC").page(params[:page]).per_page(25)
     else
-      @training_sessions = TrainingSession.order("position").page(params[:page]).per_page(25)
+      @training_sessions = TrainingSession.order("created_at DESC").page(params[:page]).per_page(25)
     end
   end
   
   def show
     @training_session = TrainingSession.find(params[:id])
+    redirect_to(root_url, :alert => "You are not authorized to access this page.") unless (current_site.can_view?(@training_session) || current_user.admin?)
     if params[:viewing_id].present?
       @viewing = Viewing.find(params[:viewing_id])
     end
@@ -41,7 +39,7 @@ class TrainingSessionsController < ApplicationController
     @training_session = TrainingSession.new(params[:training_session])
     @training_session.user_id = current_user.id
     if @training_session.save
-      redirect_to training_sessions_path, :notice => "Your training session has been successfully created"
+      redirect_to @training_session, :notice => "Your training session has been successfully created"
     else
       render 'new'
     end
@@ -51,27 +49,7 @@ class TrainingSessionsController < ApplicationController
     @training_session = TrainingSession.find(params[:id])
     @training_session.destroy
     flash[:notice] = "Your training session has been successfully deleted"
-    redirect_to training_sessions_path
-  end
-  
-  def order
-    @training_sessions = TrainingSession.order("position")
-  end
-  
-  def sort
-    params[:training_session].each_with_index do |id, index|
-      TrainingSession.update_all({position: index+1}, {id: id})
-    end
-    flash[:notice] = "Training sessions reordered successfully."
-    render nothing: true
-  end
-  
-  private
-  
-  def viewer_required
-    unless current_user.admin?
-      redirect_to new_viewer_url if current_viewer.nil?
-    end
+    redirect_to training_library_path
   end
   
 end

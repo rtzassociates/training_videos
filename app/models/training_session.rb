@@ -1,5 +1,5 @@
 class TrainingSession < ActiveRecord::Base
-  attr_accessible :name, :user_id, :pdf, :vimeo_embed
+  attr_accessible :name, :user_id, :pdf, :vimeo_embed, :site_ids
 
   mount_uploader :pdf, PdfUploader
 
@@ -7,6 +7,9 @@ class TrainingSession < ActiveRecord::Base
 
   has_many :viewings, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+  
+  has_many :site_training_sessions
+  has_many :sites, :through => :site_training_sessions
   
   validates :name, :presence => true
   validates :user_id, :presence => true

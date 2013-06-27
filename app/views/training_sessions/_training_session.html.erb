@@ -21,8 +21,17 @@
       </p>
       <% if current_user.admin? %>
         <div class="actions pull-right">
-          <%= link_to 'Edit', edit_training_session_path(training_session) %>
-          <%= link_to 'Delete', training_session, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
+          <% if current_site.can_view? training_session %>
+            <%= render :partial => "site_training_sessions/remove_from_site",
+                       :locals => { :training_session_id => training_session.id } %>
+          <% else %>
+            <%= render :partial => "site_training_sessions/add_to_site",
+                       :locals => { :training_session_id => training_session.id } %>
+          <% end %>
+          <% if params[:controller] == "training_sessions" %>
+            <%= link_to 'Edit', edit_training_session_path(training_session) %>
+            <%= link_to 'Delete', training_session, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
+          <% end %>
         </div>
       <% end %>
       <% if current_user.admin? %>

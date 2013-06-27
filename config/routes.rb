@@ -1,7 +1,9 @@
 Cachely::Application.routes.draw do
 
   resources :users
-  resources :training_sessions do
+  resources :training_sessions
+  
+  resources :site_training_sessions do
     collection do
       get :order
       post :sort
@@ -16,13 +18,15 @@ Cachely::Application.routes.draw do
     resource :style_settings
     resource :site_content
   end
+
   resources :style_settings
   resources :site_contents
   
   match "login" => "sessions#new"
   match "signout" => "sessions#destroy"
+  match "training_library" => "training_sessions#index"
   
-  root to: 'training_sessions#index'
+  root to: 'site_training_sessions#index'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

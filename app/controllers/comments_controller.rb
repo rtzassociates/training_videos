@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
       flash[:notice] = "Thanks for viewing!"
     end
     Viewing.find(params[:comment][:viewing_id]).complete_viewing!
-    redirect_to training_sessions_path
+    redirect_to site_training_sessions_path
   end
   
   def destroy

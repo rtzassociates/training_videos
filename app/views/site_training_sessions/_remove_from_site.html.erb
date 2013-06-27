@@ -1,0 +1,6 @@
+<%= form_for SiteTrainingSession.find_by_training_session_id(training_session_id),
+    :html => { :method => :delete,  :class => 'inline' } do |f| %>
+    <%= f.hidden_field :training_session_id, :value => training_session_id %>
+    <%= f.hidden_field :site_id, :value  => current_site.id %>
+  <%= f.submit "Remove From Site", :class => "btn" %>
+<% end %>

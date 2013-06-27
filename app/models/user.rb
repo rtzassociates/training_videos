@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  attr_accessible :username, :password, :password_confirmation, :token, :admin
+  attr_accessible :username, :password, :password_confirmation, 
+                  :token, :admin, :site_id
   attr_accessor :password
   before_save :prepare_password
   
@@ -11,6 +12,8 @@ class User < ActiveRecord::Base
   
   has_many :training_sessions
   has_many :viewers, :dependent => :destroy
+  
+  belongs_to :site
   
   default_scope :order => "username ASC"
   

@@ -15,6 +15,7 @@ class Ability
       cannot :read, Site
       cannot :read, SiteContent
       cannot :read, StyleSetting
+      
     end
   end
 end

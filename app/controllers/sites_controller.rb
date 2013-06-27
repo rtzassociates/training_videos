@@ -1,5 +1,6 @@
 class SitesController < ApplicationController
   authorize_resource
+  include SitesHelper
   
   def index
     @sites = Site.page(params[:page]).per_page(50)

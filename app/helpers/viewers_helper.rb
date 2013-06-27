@@ -5,6 +5,6 @@ module ViewersHelper
   
   def store_viewer(viewer)
     cookies[:viewer_id] = viewer.id
-    redirect_to training_sessions_path
+    redirect_to site_training_sessions_path
   end
 end

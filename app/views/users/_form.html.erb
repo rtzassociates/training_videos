@@ -15,6 +15,16 @@
     </div>
     
     <div class="control-group">
+      <%= f.label :site_id, "Site Name", :class => "control-label" %>
+      <div class="controls">
+            <%= f.collection_select :site_id, 
+                                    Site.order(:name => "ASC"), 
+                                    :id, :name,
+                                    :include_blank => true %>
+          </div>
+    </div>
+    
+    <div class="control-group">
       <%= f.label :password, :class => "control-label" %>
       <div class="controls">
         <%= f.password_field :password, :placeholder => "Password", :autocomplete => "off" %>
