@@ -11,16 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130627084344) do
-
-  create_table "categories", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "thumbnail"
-  end
+ActiveRecord::Schema.define(:version => 20130627104756) do
 
   create_table "comments", :force => true do |t|
     t.integer  "viewer_id"
@@ -46,24 +37,6 @@ ActiveRecord::Schema.define(:version => 20130627084344) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
-
-  create_table "favorites", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "favoriteable_id"
-    t.string   "favoriteable_type"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-  end
-
-  add_index "favorites", ["favoriteable_id", "favoriteable_type"], :name => "index_favorites_on_favoriteable_id_and_favoriteable_type"
-
-  create_table "profiles", :force => true do |t|
-    t.string   "name"
-    t.string   "image"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "site_contents", :force => true do |t|
     t.text     "training_session_greeting"
@@ -99,12 +72,6 @@ ActiveRecord::Schema.define(:version => 20130627084344) do
     t.string   "link_color"
   end
 
-  create_table "tags", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "training_sessions", :force => true do |t|
     t.string   "name"
     t.datetime "created_at",  :null => false
@@ -116,7 +83,6 @@ ActiveRecord::Schema.define(:version => 20130627084344) do
     t.boolean  "success"
     t.string   "pdf"
     t.text     "vimeo_embed"
-    t.integer  "position"
   end
 
   create_table "users", :force => true do |t|
@@ -127,13 +93,6 @@ ActiveRecord::Schema.define(:version => 20130627084344) do
     t.datetime "updated_at",    :null => false
     t.boolean  "admin"
     t.integer  "site_id"
-  end
-
-  create_table "video_tags", :force => true do |t|
-    t.integer  "video_id"
-    t.integer  "tag_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "viewers", :force => true do |t|
@@ -151,14 +110,6 @@ ActiveRecord::Schema.define(:version => 20130627084344) do
     t.datetime "updated_at",          :null => false
     t.integer  "training_session_id"
     t.datetime "completed_at"
-  end
-
-  create_table "views", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "viewable_id"
-    t.string   "viewable_type"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
   end
 
 end
