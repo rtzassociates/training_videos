@@ -41,7 +41,7 @@
 
 <div id="viewings">
   <h3>Viewed Training Sessions</h3>
-  <p class="muted"><%= pluralize @viewer.viewings.count, "training session" %> <%= "has".pluralize(@viewer.viewings.count) %> viewed</p>
+  <p class="muted"><%= pluralize @viewer.viewings.count, "training session" %> viewed</p>
   <br>
   <% if @viewings.any? %>
     <table class="table table-striped table-bordered">
