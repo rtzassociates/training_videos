@@ -93,8 +93,8 @@
           <% @training_session.viewings.order('id DESC').each do |viewing| %>
             <tr>
               <td><%= date_for viewing.created_at %></td>
-              <td><%= link_to viewing.viewer.name.titleize, 
-                              viewing.viewer %>
+              <td><%= link_to(viewing.viewer.name.titleize, 
+                              viewing.viewer) unless viewing.viewer.nil? %>
               </td>
               </td>
               <td><%= viewing.participants %></td>
@@ -104,6 +104,7 @@
                     <i class="icon-ok"> Completed</i>
                   </span>
                 <% end %>
+                <%= link_to "Delete", viewing, :method => :delete, :class => "danger" %>
               </td>
             </tr>
           <% end %>
