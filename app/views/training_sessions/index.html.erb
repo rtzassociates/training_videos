@@ -14,10 +14,6 @@
   <% end %>
 </div>
 
-<div class="heading">
-  
-</div>
-
 <div id="training_sessions">
   <% if @training_sessions.any? %>  
     <% @training_sessions.each_with_index do |training_session, index| %>
@@ -28,6 +24,5 @@
       <p>Nothing to show</p>
     </div>
   <% end %>
+  <%= will_paginate @training_sessions %>
 </div>
-
-<%= will_paginate @training_sessions %>

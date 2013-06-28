@@ -1,22 +1,26 @@
 class TrainingSessionsController < ApplicationController
-  
+  include SitesHelper
   authorize_resource
-    
+  
+  before_filter :viewing_required, :only => [:show]
+  
   def index
-    redirect_to(root_url, :alert => "You are not authorized to access this page.") unless current_user.admin?
     if params[:order] == "asc"
-      @training_sessions = TrainingSession.order("created_at ASC").page(params[:page]).per_page(25)
+      @training_sessions = TrainingSession.order("created_at ASC")
     else
-      @training_sessions = TrainingSession.order("created_at DESC").page(params[:page]).per_page(25)
+      @training_sessions = TrainingSession.order("created_at DESC")
     end
+    @training_sessions = @training_sessions.page(params[:page]).per_page(25)
+    authorize! :manage, @training_sessions
   end
   
   def show
     @training_session = TrainingSession.find(params[:id])
-    redirect_to(root_url, :alert => "You are not authorized to access this page.") unless (current_site.can_view?(@training_session) || current_user.admin?)
+    site_can_view?(@training_session)
     if params[:viewing_id].present?
       @viewing = Viewing.find(params[:viewing_id])
     end
+    @viewings = @training_session.viewings.order('id DESC').page(params[:page]).per_page(25)
     @comment = Comment.new
   end
 
@@ -50,6 +54,14 @@ class TrainingSessionsController < ApplicationController
     @training_session.destroy
     flash[:notice] = "Your training session has been successfully deleted"
     redirect_to training_library_path
+  end
+  
+  private
+  
+  def viewing_required
+    unless current_user.admin?
+      redirect_to(root_url, :notice => "Choose a training session to begin a viewing") unless params[:viewing_id]
+    end
   end
   
 end

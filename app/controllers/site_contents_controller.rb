@@ -9,7 +9,7 @@ class SiteContentsController < ApplicationController
   def update
     @site_content = SiteContent.find(params[:id])
     if @site_content.update_attributes(params[:site_content])
-      redirect_to @site_content.site, :notice => "Style Settings updated successfully"
+      redirect_to @site_content.site, :notice => "Style settings updated successfully"
     else
       render 'edit'
     end

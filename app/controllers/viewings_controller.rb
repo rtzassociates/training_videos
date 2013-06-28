@@ -3,6 +3,11 @@ class ViewingsController < ApplicationController
   
   before_filter :check_for_training_session_id, :only => [:new]
   
+  def index
+    @viewings = Viewing.order(:created_at => "DESC").page(params[:page]).per_page(100)
+    authorize! :manage, @viewings
+  end
+  
   def new
     @viewing = Viewing.new
     @training_session = TrainingSession.find(params[:training_session_id])

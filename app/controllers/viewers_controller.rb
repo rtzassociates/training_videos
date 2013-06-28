@@ -7,7 +7,8 @@ class ViewersController < ApplicationController
   
   def show
     @viewer = Viewer.find(params[:id])
-    @viewings = @viewer.viewings.order("created_at DESC")
+    redirect_to(root_url, :alert => "You are not authorized to access this page.") unless (@viewer == current_viewer || current_user.admin?)
+    @viewings = @viewer.viewings.order("created_at DESC").page(params[:page]).per_page(25)
   end
   
   def new

@@ -13,7 +13,7 @@ class StyleSettingsController < ApplicationController
       render :action => 'edit'
     else
       @style_setting.update_attributes(params[:style_setting])
-      redirect_to @style_setting.site, :notice => "Style Settings updated successfully"
+      redirect_to @style_setting.site, :notice => "Style settings updated successfully"
     end
   end
   

@@ -28,10 +28,6 @@
       <%= render :partial => training_session, :locals => { :index => index } %>
     <% end %>
   <% else %>
-    <div class="heading">
-      <p>Nothing to show</p>
-    </div>
+    <p>Nothing to show</p>
   <% end %>
 </div>
-
-<%= will_paginate @training_sessions %>

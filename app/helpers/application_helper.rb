@@ -10,6 +10,6 @@ module ApplicationHelper
   end
   
   def date_for(time)
-    time.strftime("%A, %b %-d %Y,%l:%M %p")
+    time.strftime("%a, %b %-d %Y,%l:%M %p")
   end
 end

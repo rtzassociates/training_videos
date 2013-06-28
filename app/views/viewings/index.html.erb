@@ -1,0 +1,26 @@
+<div id="viewings">
+  <h1>Viewing Log</h1>
+  <hr>
+  <% if @viewings.any? %>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Viewing Date</th>
+          <th>Training Session</th>
+          <th>Viewer Name</th>
+          <th>Participants</th>
+          <th>Completed?</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @viewings %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>Nothing to show.</p>
+  <% end %>
+  <%= will_paginate @viewings %>
+  <br>
+  <p><%= link_to raw("&#8592; Return to training sessions"), site_training_sessions_path, :class => 'link-large' %></p>
+</div>

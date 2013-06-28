@@ -51,6 +51,7 @@
           <th>Training Session</th>
           <th>Participants</th>
           <th>Completed?</th>
+          <th>
         </tr>
       </thead>
       <tbody>
@@ -60,6 +61,6 @@
   <% else %>
     <p>Nothing to show.</p>
   <% end %>
-  <br>
+  <%= will_paginate @viewings, :params => { :anchor => "viewings" } %>
   <p><%= link_to raw("&#8592; Return to training sessions"), site_training_sessions_path, :class => 'link-large' %></p>
 </div>

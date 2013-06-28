@@ -91,31 +91,13 @@
           </tr>
         </thead>
         <tbody>
-          <% @training_session.viewings.order('id DESC').each do |viewing| %>
-            <tr>
-              <td><%= date_for viewing.created_at %></td>
-              <td><%= link_to(viewing.viewer.name.titleize, 
-                              viewing.viewer) unless viewing.viewer.nil? %>
-              </td>
-              </td>
-              <td><%= viewing.participants %></td>
-              <td>
-                <% if viewing.completed_at %>
-                  <span class="completed">
-                    <i class="icon-ok"> Completed</i>
-                  </span>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to "Delete", viewing, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
-              </td>
-            </tr>
-          <% end %>
+          <%= render @viewings %>
         </tbody>
       </table>
     <% else %>
       <p>Nothing to show.</p>
     <% end %>
+    <%= will_paginate @viewings, :params => { :anchor => "viewings" } %>
     <br>
     <p><%= link_to raw("&#8592; Return to training sessions"), site_training_sessions_path, :class => 'link-large' %></p>
     <br>
