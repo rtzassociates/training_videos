@@ -22,7 +22,7 @@ class ViewingsController < ApplicationController
   def destroy
     @viewing = Viewing.find(params[:id])
     @viewing.destroy
-    redirect_to training_session_path(@viewing.training_session)
+    redirect_to training_session_path(@viewing.training_session), :notice => "Viewing deleted successfully"
   end
   
   private

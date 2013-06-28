@@ -107,7 +107,7 @@
                 <% end %>
               </td>
               <td>
-                <%= link_to "Delete", viewing, :method => :delete, :class => "danger" %>
+                <%= link_to "Delete", viewing, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
               </td>
             </tr>
           <% end %>
