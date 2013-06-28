@@ -14,11 +14,13 @@
       </h3>
       <p class="muted">
         Added on <%= date_for training_session.created_at %>
-        <% if current_user.admin? %>
-          | <%= pluralize training_session.viewings.count, 'view' %>
-          | <%= pluralize training_session.comments.count, 'comment' %>
-        <% end %>
       </p>
+      <% if current_user.admin? %>
+        <p class="muted">
+          <%= pluralize training_session.viewings.count, 'view' %> |
+          <%= pluralize training_session.comments.count, 'comment' %>
+        </p>
+      <% end %>
       <% if current_user.admin? %>
         <div class="actions pull-right">
           <% if current_site.can_view? training_session %>
