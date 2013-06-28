@@ -87,6 +87,7 @@
             <th>Viewer Name</th>
             <th>Participants</th>
             <th>Completed?</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -104,6 +105,8 @@
                     <i class="icon-ok"> Completed</i>
                   </span>
                 <% end %>
+              </td>
+              <td>
                 <%= link_to "Delete", viewing, :method => :delete, :class => "danger" %>
               </td>
             </tr>

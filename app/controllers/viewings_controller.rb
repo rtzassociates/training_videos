@@ -19,6 +19,12 @@ class ViewingsController < ApplicationController
     end
   end
   
+  def destroy
+    @viewing = Viewing.find(params[:id])
+    @viewing.destroy
+    redirect_to training_session_path(@viewing.training_session)
+  end
+  
   private
   
   def check_for_training_session_id
