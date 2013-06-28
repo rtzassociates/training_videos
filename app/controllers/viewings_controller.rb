@@ -4,7 +4,7 @@ class ViewingsController < ApplicationController
   before_filter :check_for_training_session_id, :only => [:new]
   
   def index
-    @viewings = Viewing.order(:created_at => "DESC").page(params[:page]).per_page(100)
+    @viewings = Viewing.order("created_at DESC").page(params[:page]).per_page(50)
     authorize! :manage, @viewings
   end
   
