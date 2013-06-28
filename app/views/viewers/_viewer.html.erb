@@ -3,7 +3,7 @@
     <hr>
     <h3><%= link_to viewer.name.titleize, viewer %></h3>
     <p class="muted">Created on <%= viewer.created_at.strftime("%A, %b %-d %Y,%l:%M %p") %></p>
-    <p class="muted"><%= pluralize viewer.viewings.count, 'training session' %> viewed so far.</p>
+    <p class="muted"><%= pluralize viewer.viewings.count, 'training session' %> viewed so far</p>
     <p class="muted"><%= viewer.email %></p>
     <% if current_user.admin? %>
       <div class="actions pull-right">
