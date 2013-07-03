@@ -3,6 +3,7 @@
   
   <%= f.hidden_field :training_session_id, :value => params[:training_session_id] %>
   <%= f.hidden_field :viewer_id, :value => current_viewer.id %>
+  <%= f.hidden_field :site_id, :value => current_site.id %>
   
   <div class="control-group">
     <%= f.label :participants, "Other Participants", :class => "control-label" %>

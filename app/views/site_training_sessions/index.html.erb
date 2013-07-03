@@ -1,14 +1,27 @@
 <div class="heading">
-  <h1>All Training Sessions</h1>
+  <% if current_user.admin? %>
+    <h1>Published Training Sessions</h1>
+  <% else %>
+    <h1>All Training Sessions</h1>
+  <% end%>
   <hr>
+  <% if current_user.admin? %>
+    <div class="well">
+      The training sessions listed below are visible to users of the current site. Click "Unpublish" to remove a training session from the current site. You can publish additional training sessions to the current site from the "Training Library". Click "Edit Order" to change the order in which the training sessions are displayed on the current site.
+    </div>
+  <% end %>
 </div>
 
-<% if current_viewer && current_site.site_content.training_session_greeting.present? %>
+<% if current_viewer %>
   <div id="instructions" class="well">
     <h4>Hi <%= current_viewer.name.capitalize %>,</h4>
-    <p><%= raw current_site.site_content.training_session_greeting %></p>
+    <% if current_site.site_content.training_session_greeting.present? %>
+      <p><%= raw current_site.site_content.training_session_greeting %></p>
+    <% else%>
+      <p>Click on one of the “Select“ buttons below to open a specific training topic. Enter the full names of any other individuals participating in this training session other than yourself (if it’s only you, please leave this field blank) then click on the “Submit Sign-in Sheet” button. A copy of the supplemental PDF documentation will be sent to your email address; you may also open and save the PDF from this page. When ready for the video to begin click the “View Video” button. Use the “HD” and arrow icons on the bottom right of the video to improve the picture quality and expand the video to full-screen. After minimizing the video, you can submit feedback if you’d like (such as comments and questions). Thanks for participating!</p>
+    <% end %>
   </div>
-<% end %>
+<% end %> 
 
 <div class="heading">
   <h3>Currently Available Topics</h3>

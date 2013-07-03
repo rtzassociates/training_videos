@@ -2,10 +2,12 @@
   <div class="site span12">
     <hr>
     <h3><%= link_to site.name, site %></h3>
+    <h4><%= link_to "#{domain_name_for(site)}", "#{domain_name_for(site)}" %></h4>
     <p class="muted">Created on <%= site.created_at.strftime("%A, %b %-d %Y,%l:%M %p") %></p>
     <p class="muted">
       <%= pluralize site.users.count, 'user' %> |
-      <%= pluralize site.training_sessions.count, 'training session' %>
+      <%= pluralize site.viewings.count, 'training session' %> viewed |
+      <%= pluralize site.training_sessions.count, 'published training session' %>
     </p>
     <% if current_user.admin? %>
       <div class="actions pull-right">

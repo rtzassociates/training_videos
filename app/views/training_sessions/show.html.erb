@@ -34,6 +34,7 @@
       <%= f.hidden_field :training_session_id, :value => @training_session.id %>
       <%= f.hidden_field :viewing_id, :value => @viewing.id %>
       <%= f.hidden_field :viewer_id, :value => current_viewer.id %>
+      <%= f.hidden_field :site_id, :value => current_site.id %>
       <div class="control-group">
         <div class="controls">
           <%= f.text_area :content, :class => "span10", :rows => 3 %>
@@ -47,24 +48,8 @@
     <div class="heading">
       <h3>Comments</h3>
     </div>
-    <% if @training_session.comments.any? %>
-      <% @training_session.comments.each do |comment| %>
-        <div class="comment well">
-          <h4>
-            <%= link_to comment.viewer.name.capitalize, comment.viewer %>
-          </h4>
-          <p class="muted">On <%= date_for comment.created_at %></p>
-          <% if comment.content.blank? %>
-            <p class="muted">Did not leave comment.</p>
-          <% else %>
-            <p><%= comment.content %><p>
-          <% end %>
-          <div class="pull-right actions">
-            <%= link_to "Delete", comment, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
-          </div>
-          <div class="clearfix"></div>
-        </div>
-      <% end %>
+    <% if @comments.any? %>
+      <%= render @comments%>
     <% else %>
     <div class="comment">
       <p>No comments to show.</p>
@@ -77,17 +62,17 @@
   <div id="viewings">
     <hr>
     <h3>Viewing Log</h3>
-    <p class="muted"><%= @training_session.name %> has been viewed <%= pluralize @training_session.viewings.count, 'time' %></p>
+    <p class="muted"><%= @training_session.name %> has been viewed <%= pluralize @viewings.count, 'time' %></p>
     <br>
-    <% if @training_session.viewings.any? %>
+    <% if @viewings.any? %>
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
             <th>Viewing Date</th>
             <th>Viewer Name</th>
+            <th>Site Name</th>
             <th>Participants</th>
             <th>Completed?</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>

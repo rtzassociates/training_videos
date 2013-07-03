@@ -15,6 +15,14 @@ class User < ActiveRecord::Base
   
   belongs_to :site
   
+  def self.search(search)
+    if search
+      where('username LIKE ?', "%#{search}%")
+    else
+      order("username ASC")
+    end
+  end
+  
   def self.authenticate(username, pass)
     user = find_by_username(username)
     return user if user && user.password_hash == user.encrypt_password(pass)

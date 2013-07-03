@@ -1,0 +1,14 @@
+<div class="comment well">
+  <h4>
+    <%= link_to comment.viewer.name.capitalize, comment.viewer %>
+  </h4>
+  <p class="muted">On <%= date_for comment.created_at %></p>
+  <% if comment.site.present? %>
+    <p class="muted"><%= comment.site.name %></p>
+  <% end %>
+  <p><%= comment.content %><p>
+  <div class="pull-right actions">
+    <%= link_to "Delete", comment, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
+  </div>
+  <div class="clearfix"></div>
+</div>

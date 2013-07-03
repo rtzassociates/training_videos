@@ -2,6 +2,7 @@
   <div class="span12">
     <div class="heading">
       <h1><%= @site.name %></h1>
+      <h4><%= link_to "#{domain_name_for(@site)}", "#{domain_name_for(@site)}" %></h4>
       <% if current_user.admin? %>
         <div class="actions">
           <%= link_to "Edit Site", edit_site_path(@site) %>
@@ -11,16 +12,11 @@
         </div>
       <% end %>
       <div class="clearfix"></div>
-      <hr>
-    </div>
-    <div id="site">   
-      <h3><strong>Link to site</strong></h3>
-      <h4><%= link_to "#{domain_name_for(@site)}", "#{domain_name_for(@site)}" %></h4>
     </div>
     <% if @site.users.any? %>
       <div class="heading">
         <hr>
-        <h3>Site Users</h3>
+        <h2>User List</h2>
       </div>
       <div id="users">
         <%= render @site.users %>

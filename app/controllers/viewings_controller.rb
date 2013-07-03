@@ -4,7 +4,11 @@ class ViewingsController < ApplicationController
   before_filter :check_for_training_session_id, :only => [:new]
   
   def index
-    @viewings = Viewing.order("created_at DESC").page(params[:page]).per_page(50)
+    if params[:start_date] || params[:end_date]
+      @viewings = Viewing.viewed_between(params[:start_date], params[:end_date]).page(params[:page]).per_page(25)
+    else
+      @viewings = Viewing.search(params[:search]).page(params[:page]).per_page(25)
+    end
     authorize! :manage, @viewings
   end
   

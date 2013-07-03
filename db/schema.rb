@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130627104756) do
+ActiveRecord::Schema.define(:version => 20130703192850) do
 
   create_table "comments", :force => true do |t|
     t.integer  "viewer_id"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20130627104756) do
     t.datetime "updated_at",          :null => false
     t.integer  "training_session_id"
     t.integer  "viewing_id"
+    t.integer  "site_id"
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -110,6 +111,7 @@ ActiveRecord::Schema.define(:version => 20130627104756) do
     t.datetime "updated_at",          :null => false
     t.integer  "training_session_id"
     t.datetime "completed_at"
+    t.integer  "site_id"
   end
 
 end

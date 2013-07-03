@@ -17,8 +17,13 @@
       </p>
       <% if current_user.admin? %>
         <p class="muted">
-          <%= pluralize training_session.viewings.count, 'view' %> |
-          <%= pluralize training_session.comments.count, 'comment' %>
+          <% if params[:controller] == "site_training_sessions" %>
+            <%= pluralize current_site.viewings_for(training_session).count, 'view' %> |
+            <%= pluralize current_site.comments_for(training_session).count, 'comment' %>
+          <% else %>
+            <%= pluralize training_session.viewings.count, 'view' %> |
+            <%= pluralize training_session.comments.count, 'comment' %>
+          <% end %>      
         </p>
       <% end %>
       <% if current_user.admin? %>

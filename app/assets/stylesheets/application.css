@@ -12,5 +12,6 @@
  *= require chosen
  *= require token-input-facebook
  *= require bootstrap-wysihtml5
+ *= require jquery.ui.datepicker
  *= require_tree .
  */

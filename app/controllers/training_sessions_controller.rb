@@ -20,7 +20,8 @@ class TrainingSessionsController < ApplicationController
     if params[:viewing_id].present?
       @viewing = Viewing.find(params[:viewing_id])
     end
-    @viewings = @training_session.viewings.order('id DESC').page(params[:page]).per_page(25)
+    @viewings = @training_session.viewings.order('id DESC').page(params[:page]).per_page(10)
+    @comments = @training_session.comments.order('id DESC').page(params[:page]).per_page(5)
     @comment = Comment.new
   end
 

@@ -7,6 +7,7 @@ class Site < ActiveRecord::Base
   has_many :users
   has_many :site_training_sessions
   has_many :training_sessions, :through => :site_training_sessions
+  has_many :viewings
   
   validates_presence_of :name
   validates_uniqueness_of :name
@@ -24,4 +25,13 @@ class Site < ActiveRecord::Base
   def banner_image_name
     self.banner_image.to_s.split("/").last
   end
+  
+  def viewings_for(training_session)
+    training_session.viewings.joins(:site).where("viewings.site_id = ?", self.id)
+  end
+  
+  def comments_for(training_session)
+    training_session.comments.joins(:site).where("comments.site_id = ?", self.id)
+  end
+  
 end

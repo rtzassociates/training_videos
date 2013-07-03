@@ -22,15 +22,19 @@
     </td>
   <% end %>
   
-  <td><%= viewing.participants %></td>
+  <% if params[:controller] == "viewings" %>
+    <td><%= link_to(viewing.site.name, viewing.site) unless viewing.site.nil? %></td>
+  <% elsif params[:controller] == "training_sessions" %>
+    <td><%= link_to(viewing.site.name, viewing.site) unless viewing.site.nil? %></td>
+    <td><%= viewing.participants %></td>
+  <% else %>
+    <td><%= viewing.participants %></td>
+  <% end %>
   <td>
     <% if viewing.completed_at %>
       <span class="completed">
         <i class="icon-ok"> Completed</i>
       </span>
     <% end %>
-  </td>
-  <td>
-    <%= link_to "Delete", viewing, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "danger" %>
   </td>
 </tr>
