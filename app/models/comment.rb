@@ -4,4 +4,9 @@ class Comment < ActiveRecord::Base
   belongs_to :training_session
   belongs_to :viewer
   belongs_to :site
+  
+  validates :site_id, :presence => true
+  validates :training_session_id, :presence => true
+  validates :viewer_id, :presence => true
+  validates :viewing_id, :presence => true
 end

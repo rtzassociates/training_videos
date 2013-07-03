@@ -7,6 +7,7 @@ class Viewing < ActiveRecord::Base
   
   validates :viewer_id, :presence => true
   validates :training_session_id, :presence => true
+  validates :site_id, :presence => true
   
   def complete_viewing!
     self.completed_at = Time.zone.now
