@@ -10,7 +10,10 @@
     color: <%= style_setting.link_color %>;
   }
   #banner {
+    min-height: <%= current_site.banner_image.height %>px;
+    margin-bottom: 1em;
     background-image-width: 940px;
     background-image: url("<%= current_site.banner_image_url %>");
+    background-repeat: no-repeat;
   }
 </style>

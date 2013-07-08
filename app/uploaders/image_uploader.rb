@@ -32,6 +32,13 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :banner do
     process resize_to_fill: [940, 160]
   end
+
+  def height
+    if (@file)
+      img = ::Magick::Image::read(@file.file).first
+      return img.rows
+    end
+  end
   
   def default_url
     "/images/fallback/" + [version_name, "background.png"].compact.join('_')
