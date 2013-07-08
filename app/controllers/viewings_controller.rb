@@ -5,7 +5,7 @@ class ViewingsController < ApplicationController
   
   def index
     if params[:start_date] || params[:end_date]
-      @viewings = Viewing.viewed_between(params[:start_date], params[:end_date]).page(params[:page]).per_page(25)
+      @viewings = Viewing.viewed_between(params[:start_date], params[:end_date]).order('created_at DESC').page(params[:page]).per_page(25)
     else
       @viewings = Viewing.search(params[:search]).page(params[:page]).per_page(25)
     end
