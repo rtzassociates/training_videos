@@ -1,6 +1,5 @@
 <div id="viewings">
-  <h1>Viewing Log - All Sites</h1>
-  <p><%= link_to "Current Site", site_viewings_path, :class => 'link-large' %></p>
+  <h1>Viewing Log</h1>
   <br>
   <div class="pull-left">
     <div id="date_select">
@@ -21,7 +20,7 @@
   </div>
   <div class="clearfix"></div>
   <hr>
-  <h4><%= pluralize @viewings.count, 'training session'%> viewed so far</h4>
+  <h4>Showing <%= pluralize @viewings.count, 'training session'%></h4>
   <br>
   <% if @viewings.any? %>
     <table class="table table-striped table-bordered">

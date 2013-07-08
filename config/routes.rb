@@ -13,7 +13,6 @@ Cachely::Application.routes.draw do
   resources :sessions
   resources :viewers
   resources :viewings
-  resources :site_viewings, :only => [ :index ]
   resources :comments
   resources :sites do
     resource :style_settings
